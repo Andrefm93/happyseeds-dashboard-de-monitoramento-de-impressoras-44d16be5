@@ -1,0 +1,117 @@
+{
+  "/home/ubuntu/workspace/project/src/styles.css": {
+    "file": "assets/styles-BWe1tACb.css",
+    "src": "/home/ubuntu/workspace/project/src/styles.css"
+  },
+  "_CatchBoundary-D77uwGiS.js": {
+    "file": "assets/CatchBoundary-D77uwGiS.js",
+    "name": "CatchBoundary",
+    "imports": [
+      "___23tanstack-start-server-fn-resolver-So3CJ-MC.js",
+      "_createServerFn-BVCUSTuW.js"
+    ]
+  },
+  "___23tanstack-start-server-fn-resolver-So3CJ-MC.js": {
+    "file": "assets/__23tanstack-start-server-fn-resolver-So3CJ-MC.js",
+    "name": "__23tanstack-start-server-fn-resolver",
+    "dynamicImports": [
+      "src/lib/printers.functions.ts?tss-serverfn-split"
+    ]
+  },
+  "_createServerFn-BVCUSTuW.js": {
+    "file": "assets/createServerFn-BVCUSTuW.js",
+    "name": "createServerFn"
+  },
+  "_fleet-CLVmqmue.js": {
+    "file": "assets/fleet-CLVmqmue.js",
+    "name": "fleet"
+  },
+  "_react-dom-1WZCageg.js": {
+    "file": "assets/react-dom-1WZCageg.js",
+    "name": "react-dom",
+    "imports": [
+      "___23tanstack-start-server-fn-resolver-So3CJ-MC.js"
+    ]
+  },
+  "_schemas-BLwGkJWI.js": {
+    "file": "assets/schemas-BLwGkJWI.js",
+    "name": "schemas"
+  },
+  "node_modules/.pnpm/@tanstack+react-start@1.168.56_esbuild@0.28.2_react-dom@19.3.0_react@19.3.0__react@19.3_8eb771bcb88d757549634e3ee39a1661/node_modules/@tanstack/react-start/dist/plugin/default-entry/start.ts": {
+    "file": "assets/start-Bb1g7Iqg.js",
+    "name": "start",
+    "src": "node_modules/.pnpm/@tanstack+react-start@1.168.56_esbuild@0.28.2_react-dom@19.3.0_react@19.3.0__react@19.3_8eb771bcb88d757549634e3ee39a1661/node_modules/@tanstack/react-start/dist/plugin/default-entry/start.ts",
+    "isDynamicEntry": true
+  },
+  "node_modules/.pnpm/@tanstack+start-server-core@1.169.37/node_modules/@tanstack/start-server-core/dist/esm/empty-plugin-adapters.js": {
+    "file": "assets/empty-plugin-adapters-C8vqfsfJ.js",
+    "name": "empty-plugin-adapters",
+    "src": "node_modules/.pnpm/@tanstack+start-server-core@1.169.37/node_modules/@tanstack/start-server-core/dist/esm/empty-plugin-adapters.js",
+    "isDynamicEntry": true
+  },
+  "src/lib/printers.functions.ts?tss-serverfn-split": {
+    "file": "assets/printers.functions-x8tjrWOH.js",
+    "name": "printers.functions",
+    "src": "src/lib/printers.functions.ts?tss-serverfn-split",
+    "isDynamicEntry": true,
+    "imports": [
+      "_createServerFn-BVCUSTuW.js",
+      "_schemas-BLwGkJWI.js",
+      "_fleet-CLVmqmue.js"
+    ]
+  },
+  "src/router.tsx": {
+    "file": "assets/router-CQG30xIT.js",
+    "name": "router",
+    "src": "src/router.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "___23tanstack-start-server-fn-resolver-So3CJ-MC.js",
+      "_CatchBoundary-D77uwGiS.js",
+      "_createServerFn-BVCUSTuW.js",
+      "_schemas-BLwGkJWI.js"
+    ],
+    "dynamicImports": [
+      "src/routes/index.tsx?tsr-split=component"
+    ],
+    "assets": [
+      "assets/styles-BWe1tACb.css"
+    ]
+  },
+  "src/routes/index.tsx?tsr-split=component": {
+    "file": "assets/routes-CXOiU0kM.js",
+    "name": "routes",
+    "src": "src/routes/index.tsx?tsr-split=component",
+    "isDynamicEntry": true,
+    "imports": [
+      "___23tanstack-start-server-fn-resolver-So3CJ-MC.js",
+      "_react-dom-1WZCageg.js",
+      "_fleet-CLVmqmue.js",
+      "src/router.tsx"
+    ]
+  },
+  "tanstack-start-manifest:v": {
+    "file": "assets/_tanstack-start-manifest_v-8NNp-uLA.js",
+    "name": "_tanstack-start-manifest_v",
+    "src": "tanstack-start-manifest:v",
+    "isDynamicEntry": true
+  },
+  "virtual:cloudflare/worker-entry": {
+    "file": "index.js",
+    "name": "index",
+    "src": "virtual:cloudflare/worker-entry",
+    "isEntry": true,
+    "imports": [
+      "___23tanstack-start-server-fn-resolver-So3CJ-MC.js",
+      "_CatchBoundary-D77uwGiS.js",
+      "_createServerFn-BVCUSTuW.js",
+      "_react-dom-1WZCageg.js"
+    ],
+    "dynamicImports": [
+      "tanstack-start-manifest:v",
+      "src/router.tsx",
+      "node_modules/.pnpm/@tanstack+react-start@1.168.56_esbuild@0.28.2_react-dom@19.3.0_react@19.3.0__react@19.3_8eb771bcb88d757549634e3ee39a1661/node_modules/@tanstack/react-start/dist/plugin/default-entry/start.ts",
+      "node_modules/.pnpm/@tanstack+start-server-core@1.169.37/node_modules/@tanstack/start-server-core/dist/esm/empty-plugin-adapters.js"
+    ]
+  }
+}
