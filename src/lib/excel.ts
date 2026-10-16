@@ -181,6 +181,64 @@ export function downloadTemplate(): void {
   XLSX.writeFile(workbook, "modelo-impressoras.xlsx")
 }
 
+/**
+ * Planilha de trabalho da frota: série, modelo, IP, toner (%) e cilindro (%).
+ *
+ * É o mesmo arquivo que pode ser editado e reenviado em "Atualizar com planilha":
+ * o sistema casa pela série (ou pelo IP) e atualiza apenas os percentuais.
+ */
+export function exportFleetSheet(
+  printers: FleetPrinter[],
+  timestampIso: string,
+): void {
+  const headers = [
+    "SERIE",
+    "MODELO",
+    "IP",
+    "TONER (%)",
+    "CILINDRO (%)",
+    "LOCALIZACAO",
+    "STATUS",
+    "ULTIMA VERIFICACAO",
+    "DEFEITO ENCONTRADO",
+  ]
+
+  const rows: (string | number)[][] = [
+    headers,
+    ...printers.map((printer) => [
+      printer.serial,
+      printer.model,
+      printer.ip || "",
+      printer.toner === null ? "" : printer.toner,
+      printer.drums === null ? "" : printer.drums,
+      printer.location || "",
+      printer.status,
+      formatDateBr(printer.lastCheck),
+      printer.defect || "",
+    ]),
+  ]
+
+  const worksheet = XLSX.utils.aoa_to_sheet(rows)
+  worksheet["!cols"] = [
+    { wch: 24 },
+    { wch: 14 },
+    { wch: 16 },
+    { wch: 12 },
+    { wch: 14 },
+    { wch: 46 },
+    { wch: 20 },
+    { wch: 18 },
+    { wch: 34 },
+  ]
+
+  const workbook = XLSX.utils.book_new()
+  XLSX.utils.book_append_sheet(workbook, worksheet, "Impressoras")
+  XLSX.writeFile(
+    workbook,
+    `impressoras-ip-toner-${timestampIso.slice(0, 10)}.xlsx`,
+  )
+}
+
 function slug(value: string): string {
   return value
     .toLowerCase()

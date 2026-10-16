@@ -1,7 +1,7 @@
-import { B as rootRouteId, F as isPromise, H as __commonJSMin, N as isDangerousProtocol, T as decodePath, V as require_react, W as __toESM, a as matchContext, c as ClientOnly, f as useLayoutEffect, j as hasKeys, o as useRouter, p as invariant, s as routerContext, t as getServerFnById, u as require_jsx_runtime } from "./assets/__23tanstack-start-server-fn-resolver-So3CJ-MC.js";
-import { a as createInlineCssStyleAsset, b as createSieveCache, c as getStylesheetHref, d as waitForReason, g as createServerHistory, i as createInlineCssPlaceholderAsset, l as resolveManifestAssetLink, n as ErrorComponent, p as _getRenderedMatches, s as getScriptPreloadAttrs, t as CatchBoundary, u as resolveManifestCssLink, x as isNotFound, y as executeRewriteInput } from "./assets/CatchBoundary-D77uwGiS.js";
+import { B as rootRouteId, F as isPromise, H as __commonJSMin, N as isDangerousProtocol, T as decodePath, V as require_react, W as __toESM, a as matchContext, c as ClientOnly, f as useLayoutEffect, j as hasKeys, o as useRouter, p as invariant, s as routerContext, t as getServerFnById, u as require_jsx_runtime } from "./assets/__23tanstack-start-server-fn-resolver-B1x-S3wN.js";
+import { a as createInlineCssStyleAsset, b as createSieveCache, c as getStylesheetHref, d as waitForReason, g as createServerHistory, i as createInlineCssPlaceholderAsset, l as resolveManifestAssetLink, n as ErrorComponent, p as _getRenderedMatches, s as getScriptPreloadAttrs, t as CatchBoundary, u as resolveManifestCssLink, x as isNotFound, y as executeRewriteInput } from "./assets/CatchBoundary-BJ8mBvQs.js";
 import { a as getStartOptions, c as MAX_FRAMED_STREAMS, d as TSS_FORMDATA_CONTEXT, f as TSS_SERVER_FUNCTION, g as isRedirect, h as mergeHeaders, i as safeObjectMerge, l as MAX_FRAME_PAYLOAD_SIZE, m as X_TSS_SERIALIZED, n as flattenMiddlewares, o as getStartContext, p as X_TSS_RAW_RESPONSE, r as createNullProtoObject, s as runWithStartContext, u as TSS_CONTENT_TYPE_FRAMED_VERSIONED } from "./assets/createServerFn-BVCUSTuW.js";
-import { t as require_react_dom } from "./assets/react-dom-1WZCageg.js";
+import { t as require_react_dom } from "./assets/react-dom-CzANz2mh.js";
 import { PassThrough, Readable } from "node:stream";
 import { AsyncLocalStorage as AsyncLocalStorage$1 } from "node:async_hooks";
 //#region src/error-capture.ts
@@ -13890,7 +13890,7 @@ var HEADERS = { TSS_SHELL: "X-TSS_SHELL" };
 * the dev styles URL for route-scoped CSS collection.
 */
 async function getStartManifest(matchedRoutes) {
-	const { tsrStartManifest } = await import("./assets/_tanstack-start-manifest_v-8NNp-uLA.js");
+	const { tsrStartManifest } = await import("./assets/_tanstack-start-manifest_v-BbBEd3hV.js");
 	const startManifest = tsrStartManifest();
 	let routes = startManifest.routes;
 	routes[rootRouteId];
@@ -15066,7 +15066,7 @@ var getBaseManifest = getProdBaseManifest;
 var createEarlyHintsForRequest = createEarlyHintsCollector;
 async function loadEntries() {
 	const [routerEntry, startEntry, pluginAdapters] = await Promise.all([
-		import("./assets/router-CQG30xIT.js").then((n) => n.t),
+		import("./assets/router-jMQExFWs.js").then((n) => n.t),
 		import("./assets/start-Bb1g7Iqg.js"),
 		import("./assets/empty-plugin-adapters-C8vqfsfJ.js")
 	]);

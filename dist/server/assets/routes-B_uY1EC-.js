@@ -1,7 +1,7 @@
-import { H as __commonJSMin, U as __exportAll, V as require_react, W as __toESM, o as useRouter, r as require_with_selector$1, u as require_jsx_runtime } from "./__23tanstack-start-server-fn-resolver-So3CJ-MC.js";
-import { t as require_react_dom } from "./react-dom-1WZCageg.js";
+import { H as __commonJSMin, U as __exportAll, V as require_react, W as __toESM, o as useRouter, r as require_with_selector$1, u as require_jsx_runtime } from "./__23tanstack-start-server-fn-resolver-B1x-S3wN.js";
+import { t as require_react_dom } from "./react-dom-CzANz2mh.js";
 import { c as parsePercent, i as averageToner, l as tonerBand, n as TONER_BAND_ORDER, o as formatDateBr, r as autoDefect, s as formatDateTimeBr, t as TONER_BAND_LABEL, u as DEFECT_OPTIONS } from "./fleet-CLVmqmue.js";
-import { a as restoreDemoFleet, i as refreshPrinterMonitoring, n as Route, o as setDefectsInBulk, r as importPrinterRows, s as setPrinterDefect } from "./router-CQG30xIT.js";
+import { a as restoreDemoFleet, c as updateTonerReadings, i as refreshPrinterMonitoring, n as Route, o as setDefectsInBulk, r as importPrinterRows, s as setPrinterDefect } from "./router-jMQExFWs.js";
 //#region node_modules/.pnpm/sonner@2.0.8_@types+react@19.3.0_react-dom@19.3.0_react@19.3.0__react@19.3.0/node_modules/sonner/dist/index.mjs
 var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
 var import_react_dom = /* @__PURE__ */ __toESM(require_react_dom(), 1);
@@ -529,7 +529,7 @@ function createLucideIcon(iconDataOrName, iconNode = [], aliases = []) {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$24 = {
+var __iconData$26 = {
 	name: "arrow-down-up",
 	size: 24,
 	node: [
@@ -551,8 +551,8 @@ var __iconData$24 = {
 		}]
 	]
 };
-__iconData$24.node;
-var ArrowDownUp = createLucideIcon(__iconData$24);
+__iconData$26.node;
+var ArrowDownUp = createLucideIcon(__iconData$26);
 //#endregion
 //#region node_modules/.pnpm/lucide-react@1.47.0_react@19.3.0/node_modules/lucide-react/dist/esm/icons/chart-column.mjs
 /**
@@ -561,7 +561,7 @@ var ArrowDownUp = createLucideIcon(__iconData$24);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$23 = {
+var __iconData$25 = {
 	name: "chart-column",
 	size: 24,
 	node: [
@@ -584,8 +584,8 @@ var __iconData$23 = {
 	],
 	aliases: ["bar-chart-3"]
 };
-__iconData$23.node;
-var ChartColumn = createLucideIcon(__iconData$23);
+__iconData$25.node;
+var ChartColumn = createLucideIcon(__iconData$25);
 //#endregion
 //#region node_modules/.pnpm/lucide-react@1.47.0_react@19.3.0/node_modules/lucide-react/dist/esm/icons/check-check.mjs
 /**
@@ -594,7 +594,7 @@ var ChartColumn = createLucideIcon(__iconData$23);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$22 = {
+var __iconData$24 = {
 	name: "check-check",
 	size: 24,
 	node: [["path", {
@@ -605,8 +605,8 @@ var __iconData$22 = {
 		key: "ke71qq"
 	}]]
 };
-__iconData$22.node;
-var CheckCheck = createLucideIcon(__iconData$22);
+__iconData$24.node;
+var CheckCheck = createLucideIcon(__iconData$24);
 //#endregion
 //#region node_modules/.pnpm/lucide-react@1.47.0_react@19.3.0/node_modules/lucide-react/dist/esm/icons/circle-check.mjs
 /**
@@ -615,7 +615,7 @@ var CheckCheck = createLucideIcon(__iconData$22);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$21 = {
+var __iconData$23 = {
 	name: "circle-check",
 	size: 24,
 	node: [["circle", {
@@ -629,8 +629,8 @@ var __iconData$21 = {
 	}]],
 	aliases: ["check-circle-2"]
 };
-__iconData$21.node;
-var CircleCheck = createLucideIcon(__iconData$21);
+__iconData$23.node;
+var CircleCheck = createLucideIcon(__iconData$23);
 //#endregion
 //#region node_modules/.pnpm/lucide-react@1.47.0_react@19.3.0/node_modules/lucide-react/dist/esm/icons/circle-slash.mjs
 /**
@@ -639,7 +639,7 @@ var CircleCheck = createLucideIcon(__iconData$21);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$20 = {
+var __iconData$22 = {
 	name: "circle-slash",
 	size: 24,
 	node: [["circle", {
@@ -655,8 +655,8 @@ var __iconData$20 = {
 		key: "1dfufj"
 	}]]
 };
-__iconData$20.node;
-var CircleSlash = createLucideIcon(__iconData$20);
+__iconData$22.node;
+var CircleSlash = createLucideIcon(__iconData$22);
 //#endregion
 //#region node_modules/.pnpm/lucide-react@1.47.0_react@19.3.0/node_modules/lucide-react/dist/esm/icons/clock.mjs
 /**
@@ -665,7 +665,7 @@ var CircleSlash = createLucideIcon(__iconData$20);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$19 = {
+var __iconData$21 = {
 	name: "clock",
 	size: 24,
 	node: [["circle", {
@@ -678,8 +678,8 @@ var __iconData$19 = {
 		key: "mmk7yg"
 	}]]
 };
-__iconData$19.node;
-var Clock = createLucideIcon(__iconData$19);
+__iconData$21.node;
+var Clock = createLucideIcon(__iconData$21);
 //#endregion
 //#region node_modules/.pnpm/lucide-react@1.47.0_react@19.3.0/node_modules/lucide-react/dist/esm/icons/download.mjs
 /**
@@ -688,7 +688,7 @@ var Clock = createLucideIcon(__iconData$19);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$18 = {
+var __iconData$20 = {
 	name: "download",
 	size: 24,
 	node: [
@@ -706,8 +706,8 @@ var __iconData$18 = {
 		}]
 	]
 };
-__iconData$18.node;
-var Download = createLucideIcon(__iconData$18);
+__iconData$20.node;
+var Download = createLucideIcon(__iconData$20);
 //#endregion
 //#region node_modules/.pnpm/lucide-react@1.47.0_react@19.3.0/node_modules/lucide-react/dist/esm/icons/droplet.mjs
 /**
@@ -716,7 +716,7 @@ var Download = createLucideIcon(__iconData$18);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$17 = {
+var __iconData$19 = {
 	name: "droplet",
 	size: 24,
 	node: [["path", {
@@ -724,8 +724,8 @@ var __iconData$17 = {
 		key: "c7niix"
 	}]]
 };
-__iconData$17.node;
-var Droplet = createLucideIcon(__iconData$17);
+__iconData$19.node;
+var Droplet = createLucideIcon(__iconData$19);
 //#endregion
 //#region node_modules/.pnpm/lucide-react@1.47.0_react@19.3.0/node_modules/lucide-react/dist/esm/icons/droplets.mjs
 /**
@@ -734,7 +734,7 @@ var Droplet = createLucideIcon(__iconData$17);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$16 = {
+var __iconData$18 = {
 	name: "droplets",
 	size: 24,
 	node: [["path", {
@@ -745,8 +745,8 @@ var __iconData$16 = {
 		key: "1sl1rz"
 	}]]
 };
-__iconData$16.node;
-var Droplets = createLucideIcon(__iconData$16);
+__iconData$18.node;
+var Droplets = createLucideIcon(__iconData$18);
 //#endregion
 //#region node_modules/.pnpm/lucide-react@1.47.0_react@19.3.0/node_modules/lucide-react/dist/esm/icons/file-spreadsheet.mjs
 /**
@@ -755,7 +755,7 @@ var Droplets = createLucideIcon(__iconData$16);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$15 = {
+var __iconData$17 = {
 	name: "file-spreadsheet",
 	size: 24,
 	node: [
@@ -785,8 +785,8 @@ var __iconData$15 = {
 		}]
 	]
 };
-__iconData$15.node;
-var FileSpreadsheet = createLucideIcon(__iconData$15);
+__iconData$17.node;
+var FileSpreadsheet = createLucideIcon(__iconData$17);
 //#endregion
 //#region node_modules/.pnpm/lucide-react@1.47.0_react@19.3.0/node_modules/lucide-react/dist/esm/icons/gauge.mjs
 /**
@@ -795,7 +795,7 @@ var FileSpreadsheet = createLucideIcon(__iconData$15);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$14 = {
+var __iconData$16 = {
 	name: "gauge",
 	size: 24,
 	node: [["path", {
@@ -806,8 +806,44 @@ var __iconData$14 = {
 		key: "19p75a"
 	}]]
 };
-__iconData$14.node;
-var Gauge = createLucideIcon(__iconData$14);
+__iconData$16.node;
+var Gauge = createLucideIcon(__iconData$16);
+//#endregion
+//#region node_modules/.pnpm/lucide-react@1.47.0_react@19.3.0/node_modules/lucide-react/dist/esm/icons/list-checks.mjs
+/**
+* @license lucide-react v1.47.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$15 = {
+	name: "list-checks",
+	size: 24,
+	node: [
+		["path", {
+			d: "M13 5h8",
+			key: "a7qcls"
+		}],
+		["path", {
+			d: "M13 12h8",
+			key: "h98zly"
+		}],
+		["path", {
+			d: "M13 19h8",
+			key: "c3s6r1"
+		}],
+		["path", {
+			d: "m3 17 2 2 4-4",
+			key: "1jhpwq"
+		}],
+		["path", {
+			d: "m3 7 2 2 4-4",
+			key: "1obspn"
+		}]
+	]
+};
+__iconData$15.node;
+var ListChecks = createLucideIcon(__iconData$15);
 //#endregion
 //#region node_modules/.pnpm/lucide-react@1.47.0_react@19.3.0/node_modules/lucide-react/dist/esm/icons/list-filter.mjs
 /**
@@ -816,7 +852,7 @@ var Gauge = createLucideIcon(__iconData$14);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$13 = {
+var __iconData$14 = {
 	name: "list-filter",
 	size: 24,
 	node: [
@@ -834,8 +870,8 @@ var __iconData$13 = {
 		}]
 	]
 };
-__iconData$13.node;
-var ListFilter = createLucideIcon(__iconData$13);
+__iconData$14.node;
+var ListFilter = createLucideIcon(__iconData$14);
 //#endregion
 //#region node_modules/.pnpm/lucide-react@1.47.0_react@19.3.0/node_modules/lucide-react/dist/esm/icons/list-ordered.mjs
 /**
@@ -844,7 +880,7 @@ var ListFilter = createLucideIcon(__iconData$13);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$12 = {
+var __iconData$13 = {
 	name: "list-ordered",
 	size: 24,
 	node: [
@@ -874,8 +910,8 @@ var __iconData$12 = {
 		}]
 	]
 };
-__iconData$12.node;
-var ListOrdered = createLucideIcon(__iconData$12);
+__iconData$13.node;
+var ListOrdered = createLucideIcon(__iconData$13);
 //#endregion
 //#region node_modules/.pnpm/lucide-react@1.47.0_react@19.3.0/node_modules/lucide-react/dist/esm/icons/octagon-alert.mjs
 /**
@@ -884,7 +920,7 @@ var ListOrdered = createLucideIcon(__iconData$12);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$11 = {
+var __iconData$12 = {
 	name: "octagon-alert",
 	size: 24,
 	node: [
@@ -903,8 +939,8 @@ var __iconData$11 = {
 	],
 	aliases: ["alert-octagon"]
 };
-__iconData$11.node;
-var OctagonAlert = createLucideIcon(__iconData$11);
+__iconData$12.node;
+var OctagonAlert = createLucideIcon(__iconData$12);
 //#endregion
 //#region node_modules/.pnpm/lucide-react@1.47.0_react@19.3.0/node_modules/lucide-react/dist/esm/icons/printer.mjs
 /**
@@ -913,7 +949,7 @@ var OctagonAlert = createLucideIcon(__iconData$11);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$10 = {
+var __iconData$11 = {
 	name: "printer",
 	size: 24,
 	node: [
@@ -935,8 +971,8 @@ var __iconData$10 = {
 		}]
 	]
 };
-__iconData$10.node;
-var Printer = createLucideIcon(__iconData$10);
+__iconData$11.node;
+var Printer = createLucideIcon(__iconData$11);
 //#endregion
 //#region node_modules/.pnpm/lucide-react@1.47.0_react@19.3.0/node_modules/lucide-react/dist/esm/icons/refresh-cw.mjs
 /**
@@ -945,7 +981,7 @@ var Printer = createLucideIcon(__iconData$10);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$9 = {
+var __iconData$10 = {
 	name: "refresh-cw",
 	size: 24,
 	node: [
@@ -967,8 +1003,8 @@ var __iconData$9 = {
 		}]
 	]
 };
-__iconData$9.node;
-var RefreshCw = createLucideIcon(__iconData$9);
+__iconData$10.node;
+var RefreshCw = createLucideIcon(__iconData$10);
 //#endregion
 //#region node_modules/.pnpm/lucide-react@1.47.0_react@19.3.0/node_modules/lucide-react/dist/esm/icons/rotate-ccw.mjs
 /**
@@ -977,7 +1013,7 @@ var RefreshCw = createLucideIcon(__iconData$9);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$8 = {
+var __iconData$9 = {
 	name: "rotate-ccw",
 	size: 24,
 	node: [["path", {
@@ -988,8 +1024,8 @@ var __iconData$8 = {
 		key: "1xhq8a"
 	}]]
 };
-__iconData$8.node;
-var RotateCcw = createLucideIcon(__iconData$8);
+__iconData$9.node;
+var RotateCcw = createLucideIcon(__iconData$9);
 //#endregion
 //#region node_modules/.pnpm/lucide-react@1.47.0_react@19.3.0/node_modules/lucide-react/dist/esm/icons/search.mjs
 /**
@@ -998,7 +1034,7 @@ var RotateCcw = createLucideIcon(__iconData$8);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$7 = {
+var __iconData$8 = {
 	name: "search",
 	size: 24,
 	node: [["path", {
@@ -1011,8 +1047,8 @@ var __iconData$7 = {
 		key: "4ej97u"
 	}]]
 };
-__iconData$7.node;
-var Search = createLucideIcon(__iconData$7);
+__iconData$8.node;
+var Search = createLucideIcon(__iconData$8);
 //#endregion
 //#region node_modules/.pnpm/lucide-react@1.47.0_react@19.3.0/node_modules/lucide-react/dist/esm/icons/shield-check.mjs
 /**
@@ -1021,7 +1057,7 @@ var Search = createLucideIcon(__iconData$7);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$6 = {
+var __iconData$7 = {
 	name: "shield-check",
 	size: 24,
 	node: [["path", {
@@ -1032,8 +1068,8 @@ var __iconData$6 = {
 		key: "dzmm74"
 	}]]
 };
-__iconData$6.node;
-var ShieldCheck = createLucideIcon(__iconData$6);
+__iconData$7.node;
+var ShieldCheck = createLucideIcon(__iconData$7);
 //#endregion
 //#region node_modules/.pnpm/lucide-react@1.47.0_react@19.3.0/node_modules/lucide-react/dist/esm/icons/sparkles.mjs
 /**
@@ -1042,7 +1078,7 @@ var ShieldCheck = createLucideIcon(__iconData$6);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$5 = {
+var __iconData$6 = {
 	name: "sparkles",
 	size: 24,
 	node: [
@@ -1067,8 +1103,8 @@ var __iconData$5 = {
 	],
 	aliases: ["stars"]
 };
-__iconData$5.node;
-var Sparkles = createLucideIcon(__iconData$5);
+__iconData$6.node;
+var Sparkles = createLucideIcon(__iconData$6);
 //#endregion
 //#region node_modules/.pnpm/lucide-react@1.47.0_react@19.3.0/node_modules/lucide-react/dist/esm/icons/table-2.mjs
 /**
@@ -1077,7 +1113,7 @@ var Sparkles = createLucideIcon(__iconData$5);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$4 = {
+var __iconData$5 = {
 	name: "table-2",
 	size: 24,
 	node: [
@@ -1099,8 +1135,8 @@ var __iconData$4 = {
 		}]
 	]
 };
-__iconData$4.node;
-var Table2 = createLucideIcon(__iconData$4);
+__iconData$5.node;
+var Table2 = createLucideIcon(__iconData$5);
 //#endregion
 //#region node_modules/.pnpm/lucide-react@1.47.0_react@19.3.0/node_modules/lucide-react/dist/esm/icons/triangle-alert.mjs
 /**
@@ -1109,7 +1145,7 @@ var Table2 = createLucideIcon(__iconData$4);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$3 = {
+var __iconData$4 = {
 	name: "triangle-alert",
 	size: 24,
 	node: [
@@ -1128,8 +1164,8 @@ var __iconData$3 = {
 	],
 	aliases: ["alert-triangle"]
 };
-__iconData$3.node;
-var TriangleAlert = createLucideIcon(__iconData$3);
+__iconData$4.node;
+var TriangleAlert = createLucideIcon(__iconData$4);
 //#endregion
 //#region node_modules/.pnpm/lucide-react@1.47.0_react@19.3.0/node_modules/lucide-react/dist/esm/icons/upload.mjs
 /**
@@ -1138,7 +1174,7 @@ var TriangleAlert = createLucideIcon(__iconData$3);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$2 = {
+var __iconData$3 = {
 	name: "upload",
 	size: 24,
 	node: [
@@ -1156,8 +1192,40 @@ var __iconData$2 = {
 		}]
 	]
 };
+__iconData$3.node;
+var Upload = createLucideIcon(__iconData$3);
+//#endregion
+//#region node_modules/.pnpm/lucide-react@1.47.0_react@19.3.0/node_modules/lucide-react/dist/esm/icons/wifi.mjs
+/**
+* @license lucide-react v1.47.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$2 = {
+	name: "wifi",
+	size: 24,
+	node: [
+		["path", {
+			d: "M12 20h.01",
+			key: "zekei9"
+		}],
+		["path", {
+			d: "M2 8.82a15 15 0 0 1 20 0",
+			key: "dnpr2z"
+		}],
+		["path", {
+			d: "M5 12.859a10 10 0 0 1 14 0",
+			key: "1x1e6c"
+		}],
+		["path", {
+			d: "M8.5 16.429a5 5 0 0 1 7 0",
+			key: "1bycff"
+		}]
+	]
+};
 __iconData$2.node;
-var Upload = createLucideIcon(__iconData$2);
+var Wifi = createLucideIcon(__iconData$2);
 //#endregion
 //#region node_modules/.pnpm/lucide-react@1.47.0_react@19.3.0/node_modules/lucide-react/dist/esm/icons/wrench.mjs
 /**
@@ -29142,7 +29210,7 @@ function matchesFilters(printer, filters, query) {
 	}
 	return true;
 }
-function PrintersTable({ printers, filters, onFiltersChange, query, onQueryChange, sort, onSortChange, onDefectChange, onBulkDefect, onAutoDefects }) {
+function PrintersTable({ printers, filters, onFiltersChange, query, onQueryChange, sort, onSortChange, onDefectChange, onBulkDefect, onAutoDefects, embedded = false }) {
 	const [showFilters, setShowFilters] = (0, import_react.useState)(false);
 	const [bulkDefect, setBulkDefect] = (0, import_react.useState)("Operando Normalmente");
 	const sorted = (0, import_react.useMemo)(() => sortPrinters(printers, sort), [printers, sort]);
@@ -29154,53 +29222,53 @@ function PrintersTable({ printers, filters, onFiltersChange, query, onQueryChang
 	].filter((value) => value !== "").length;
 	const hasFilters = activeFilterCount > 0 || filters.status !== "todos" || query !== "";
 	const allIds = sorted.map((printer) => printer.id);
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, { children: [
-		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardHeader, {
-			title: "Frota de impressoras",
-			subtitle: `${sorted.length} de ${printers.length} equipamentos exibidos`,
-			action: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex flex-wrap items-center gap-2",
+	const toolbar = /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "flex flex-wrap items-center gap-2",
+		children: [
+			embedded ? null : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "relative",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Search, { className: "pointer-events-none absolute top-1/2 left-2.5 size-3.5 -translate-y-1/2 text-muted-foreground" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+					value: query,
+					onChange: (event) => onQueryChange(event.target.value),
+					placeholder: "Série, modelo ou IP",
+					"aria-label": "Pesquisar por série, modelo ou IP",
+					className: "h-8 w-52 pl-8 text-xs"
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+				variant: "outline",
+				size: "sm",
+				className: "h-8 gap-1.5 text-xs",
+				onClick: () => setShowFilters((value) => !value),
 				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "relative",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Search, { className: "pointer-events-none absolute top-1/2 left-2.5 size-3.5 -translate-y-1/2 text-muted-foreground" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-							value: query,
-							onChange: (event) => onQueryChange(event.target.value),
-							placeholder: "Série, modelo ou IP",
-							"aria-label": "Pesquisar por série, modelo ou IP",
-							className: "h-8 w-52 pl-8 text-xs"
-						})]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-						variant: "outline",
-						size: "sm",
-						className: "h-8 gap-1.5 text-xs",
-						onClick: () => setShowFilters((value) => !value),
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ListFilter, { className: "size-3.5" }),
-							"Filtros",
-							activeFilterCount > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "rounded-full bg-brand px-1.5 text-[10px] font-bold text-brand-foreground",
-								children: activeFilterCount
-							}) : null
-						]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "relative",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowDownUp, { className: "pointer-events-none absolute top-1/2 left-2.5 size-3.5 -translate-y-1/2 text-muted-foreground" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("select", {
-							"aria-label": "Ordenar por",
-							value: sort,
-							onChange: (event) => onSortChange(event.target.value),
-							className: "h-8 appearance-none rounded-md border border-input bg-background pr-2 pl-8 text-xs font-medium text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring",
-							children: SORT_OPTIONS.map((option) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-								value: option.value,
-								children: option.label
-							}, option.value))
-						})]
-					})
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ListFilter, { className: "size-3.5" }),
+					"Filtros",
+					activeFilterCount > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "rounded-full bg-brand px-1.5 text-[10px] font-bold text-brand-foreground",
+						children: activeFilterCount
+					}) : null
 				]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "relative",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowDownUp, { className: "pointer-events-none absolute top-1/2 left-2.5 size-3.5 -translate-y-1/2 text-muted-foreground" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("select", {
+					"aria-label": "Ordenar por",
+					value: sort,
+					onChange: (event) => onSortChange(event.target.value),
+					className: "h-8 appearance-none rounded-md border border-input bg-background pr-2 pl-8 text-xs font-medium text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring",
+					children: SORT_OPTIONS.map((option) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+						value: option.value,
+						children: option.label
+					}, option.value))
+				})]
 			})
-		}),
+		]
+	});
+	const body = /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+		embedded ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+			className: "flex flex-wrap items-center justify-end gap-2 px-4 pt-3",
+			children: toolbar
+		}) : null,
 		showFilters ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 			className: "grid gap-2 border-b border-border bg-muted/40 px-4 py-3 sm:grid-cols-2 lg:grid-cols-5",
 			children: [
@@ -29305,35 +29373,35 @@ function PrintersTable({ printers, filters, onFiltersChange, query, onQueryChang
 					className: "border-b border-border bg-muted/40 text-[10px] font-semibold tracking-wide text-muted-foreground uppercase",
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-							className: "px-3 py-2.5",
+							className: "px-3 py-2",
 							children: "Série"
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-							className: "px-3 py-2.5",
+							className: "px-3 py-2",
 							children: "Modelo"
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-							className: "px-3 py-2.5",
+							className: "px-3 py-2",
 							children: "IP"
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-							className: "px-3 py-2.5",
+							className: "px-3 py-2",
 							children: "Localização"
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-							className: "px-3 py-2.5",
+							className: "px-3 py-2",
 							children: "Status"
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-							className: "px-3 py-2.5",
+							className: "px-3 py-2",
 							children: "Toner %"
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-							className: "px-3 py-2.5",
+							className: "px-3 py-2",
 							children: "Última atualização"
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-							className: "px-3 py-2.5",
+							className: "px-3 py-2",
 							children: "Defeito encontrado"
 						})
 					]
@@ -29344,7 +29412,7 @@ function PrintersTable({ printers, filters, onFiltersChange, query, onQueryChang
 						className: cn("border-b border-border/70 transition-colors", rowTone(printer)),
 						children: [
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
-								className: "px-3 py-2.5",
+								className: "px-3 py-2",
 								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "flex items-center gap-1.5",
 									children: [criticalZero || criticalLow ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TriangleAlert, {
@@ -29369,11 +29437,11 @@ function PrintersTable({ printers, filters, onFiltersChange, query, onQueryChang
 								children: printer.location || "—"
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
-								className: "px-3 py-2.5",
+								className: "px-3 py-2",
 								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(StatusChip, { status: printer.status })
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
-								className: "px-3 py-2.5",
+								className: "px-3 py-2",
 								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TonerCell, { printer })
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
@@ -29381,7 +29449,7 @@ function PrintersTable({ printers, filters, onFiltersChange, query, onQueryChang
 								children: formatDateBr(printer.lastCheck)
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
-								className: "px-3 py-2.5",
+								className: "px-3 py-2",
 								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "flex items-center gap-1.5",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
@@ -29408,6 +29476,12 @@ function PrintersTable({ printers, filters, onFiltersChange, query, onQueryChang
 			})
 		})
 	] });
+	if (embedded) return body;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardHeader, {
+		title: "Frota de impressoras",
+		subtitle: `${sorted.length} de ${printers.length} equipamentos exibidos`,
+		action: toolbar
+	}), body] });
 }
 //#endregion
 //#region node_modules/.pnpm/xlsx@0.18.5/node_modules/xlsx/xlsx.mjs
@@ -55732,8 +55806,518 @@ function downloadTemplate() {
 	utils.book_append_sheet(workbook, worksheet, "Impressoras");
 	writeFileSync(workbook, "modelo-impressoras.xlsx");
 }
+/**
+* Planilha de trabalho da frota: série, modelo, IP, toner (%) e cilindro (%).
+*
+* É o mesmo arquivo que pode ser editado e reenviado em "Atualizar com planilha":
+* o sistema casa pela série (ou pelo IP) e atualiza apenas os percentuais.
+*/
+function exportFleetSheet(printers, timestampIso) {
+	const rows = [[
+		"SERIE",
+		"MODELO",
+		"IP",
+		"TONER (%)",
+		"CILINDRO (%)",
+		"LOCALIZACAO",
+		"STATUS",
+		"ULTIMA VERIFICACAO",
+		"DEFEITO ENCONTRADO"
+	], ...printers.map((printer) => [
+		printer.serial,
+		printer.model,
+		printer.ip || "",
+		printer.toner === null ? "" : printer.toner,
+		printer.drums === null ? "" : printer.drums,
+		printer.location || "",
+		printer.status,
+		formatDateBr(printer.lastCheck),
+		printer.defect || ""
+	])];
+	const worksheet = utils.aoa_to_sheet(rows);
+	worksheet["!cols"] = [
+		{ wch: 24 },
+		{ wch: 14 },
+		{ wch: 16 },
+		{ wch: 12 },
+		{ wch: 14 },
+		{ wch: 46 },
+		{ wch: 20 },
+		{ wch: 18 },
+		{ wch: 34 }
+	];
+	const workbook = utils.book_new();
+	utils.book_append_sheet(workbook, worksheet, "Impressoras");
+	writeFileSync(workbook, `impressoras-ip-toner-${timestampIso.slice(0, 10)}.xlsx`);
+}
 function slug(value) {
 	return value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+}
+//#endregion
+//#region src/components/fleet/hpsd-panel.tsx
+function HpsdCard({ reading, fileName, busy, onOpen, onClear }) {
+	const total = reading.totalRows;
+	const missing = reading.withoutSerial;
+	const ready = reading.withToner;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "rounded-xl border border-brand/30 bg-brand-soft/40 px-4 py-3",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "flex flex-wrap items-start justify-between gap-3",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "min-w-0",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+					className: "flex items-center gap-2 text-xs font-bold tracking-tight text-foreground",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileSpreadsheet, { className: "size-3.5 text-brand" }), "Planilha de percentuais reconhecida"]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+					className: "mt-0.5 truncate text-[11px] text-muted-foreground",
+					children: [
+						fileName,
+						" · ",
+						reading.columns.length > 0 ? `${reading.columns.length} colunas` : "sem cabeçalho",
+						" ·",
+						" ",
+						total,
+						" equipamentos lidos"
+					]
+				})]
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex items-center gap-2",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+					size: "sm",
+					className: "h-8 gap-1.5 text-xs",
+					onClick: onOpen,
+					disabled: busy || ready === 0,
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ListChecks, { className: "size-3.5" }), "Conferir e atualizar"]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+					variant: "ghost",
+					size: "sm",
+					className: "h-8 gap-1.5 text-xs text-muted-foreground",
+					onClick: onClear,
+					disabled: busy,
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(X, { className: "size-3.5" }), "Descartar"]
+				})]
+			})]
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "mt-3 flex flex-wrap gap-2",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Chip, {
+					icon: Droplet,
+					tone: "ok",
+					label: `${ready} com leitura de toner`
+				}),
+				missing > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Chip, {
+					icon: TriangleAlert,
+					tone: "warn",
+					label: `${missing} sem número de série`
+				}) : null,
+				reading.duplicates > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Chip, {
+					icon: TriangleAlert,
+					tone: "warn",
+					label: `${reading.duplicates} linhas repetidas`
+				}) : null,
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Chip, {
+					icon: Wifi,
+					tone: reading.layout.ipColumn >= 0 ? "brand" : "muted",
+					label: reading.layout.ipColumn >= 0 ? `IP na coluna ${String.fromCharCode(65 + reading.layout.ipColumn)}` : "IP não encontrado"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Chip, {
+					icon: ListChecks,
+					tone: reading.layout.serialColumn >= 0 ? "brand" : "critical",
+					label: reading.layout.serialColumn >= 0 ? `Série na coluna ${String.fromCharCode(65 + reading.layout.serialColumn)}` : "Série não encontrada"
+				})
+			]
+		})]
+	});
+}
+function Chip({ icon: Icon, tone, label }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+		className: cn("inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-[11px] font-semibold ring-1 ring-inset", {
+			ok: "bg-ok/10 text-ok ring-ok/25",
+			warn: "bg-warn/12 text-warn ring-warn/30",
+			brand: "bg-brand/10 text-brand ring-brand/25",
+			critical: "bg-critical/10 text-critical ring-critical/30",
+			muted: "bg-muted text-muted-foreground ring-border"
+		}[tone]),
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Icon, { className: "size-3" }), label]
+	});
+}
+function HpsdConfirmDialog({ reading, fileName, busy, onClose, onConfirm }) {
+	const preview = reading.entries.slice(0, 200);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		className: "fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-foreground/45 p-3 backdrop-blur-sm sm:p-6",
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
+			className: "my-4 w-full max-w-3xl",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", {
+					className: "flex items-start justify-between gap-4 border-b border-border px-5 py-4",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h2", {
+						className: "flex items-center gap-2 text-base font-bold tracking-tight text-foreground",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileSpreadsheet, { className: "size-4 text-brand" }), "Atualizar percentuais pela planilha"]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+						className: "mt-0.5 text-xs text-muted-foreground",
+						children: [
+							fileName,
+							" · o painel casa cada linha pela",
+							" ",
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
+								className: "font-semibold text-foreground",
+								children: "série"
+							}),
+							" e, quando faltar, pelo",
+							" ",
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
+								className: "font-semibold text-foreground",
+								children: "IP"
+							}),
+							"."
+						]
+					})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+						type: "button",
+						onClick: onClose,
+						"aria-label": "Fechar",
+						className: "rounded-md p-1 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(X, { className: "size-4" })
+					})]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex flex-col gap-4 px-5 py-4",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "flex flex-wrap gap-2",
+							children: [
+								["serialColumn", "Série"],
+								["ipColumn", "IP"],
+								["tonerColumn", "Toner"]
+							].map(([key, label]) => {
+								const index = reading.layout[key];
+								return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+									className: "rounded-md border border-border bg-background px-2 py-1 text-[11px] font-medium text-foreground",
+									children: [
+										label,
+										":",
+										" ",
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: cn("font-bold", index >= 0 ? "text-brand" : "text-critical"),
+											children: index >= 0 ? `coluna ${String.fromCharCode(65 + index)}` : "não encontrada"
+										})
+									]
+								}, key);
+							})
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "max-h-80 overflow-auto rounded-lg border border-border",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("table", {
+								className: "w-full min-w-[600px] text-left text-[11px]",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("thead", {
+									className: "sticky top-0 bg-muted text-[10px] font-semibold tracking-wide text-muted-foreground uppercase",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("tr", { children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
+											className: "px-3 py-2",
+											children: "Número de série"
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
+											className: "px-3 py-2",
+											children: "IP"
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
+											className: "px-3 py-2",
+											children: "Toner lido"
+										})
+									] })
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("tbody", { children: preview.map((entry, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("tr", {
+									className: "border-t border-border/70",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
+											className: "px-3 py-1.5 font-mono font-semibold text-foreground",
+											children: entry.serial || "—"
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
+											className: "px-3 py-1.5 font-mono text-muted-foreground",
+											children: entry.ip || "—"
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
+											className: "px-3 py-1.5",
+											children: entry.toner === null ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												className: "text-muted-foreground",
+												children: "sem leitura"
+											}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+												className: "font-bold text-foreground",
+												children: [entry.toner, "%"]
+											})
+										})
+									]
+								}, `${entry.serial}-${index}`)) })]
+							})
+						}),
+						reading.entries.length > 200 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+							className: "text-[11px] text-muted-foreground",
+							children: [
+								"Prévia das primeiras 200 linhas de ",
+								reading.entries.length,
+								"."
+							]
+						}) : null,
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+							className: "flex items-start gap-2 rounded-lg bg-muted/50 px-3 py-2.5 text-[11px] text-muted-foreground",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "mt-0.5 size-3.5 shrink-0 text-ok" }), "Apenas os percentuais de toner e a data da última verificação são atualizados. Nenhum equipamento é apagado ou recadastrado."]
+						})
+					]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("footer", {
+					className: "flex flex-wrap items-center justify-end gap-2 border-t border-border px-5 py-3.5",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						variant: "outline",
+						onClick: onClose,
+						disabled: busy,
+						children: "Cancelar"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+						className: "gap-1.5",
+						onClick: onConfirm,
+						disabled: busy,
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Upload, { className: "size-3.5" }),
+							"Atualizar ",
+							reading.withToner,
+							" percentuais"
+						]
+					})]
+				})
+			]
+		})
+	});
+}
+function ReadingResultBanner({ result, onClose }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		className: "rounded-xl border border-ok/30 bg-ok/8 px-4 py-3",
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "flex flex-wrap items-start justify-between gap-3",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+				className: "flex items-center gap-2 text-xs font-bold text-foreground",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3.5 text-ok" }),
+					"Atualização concluída — ",
+					result.updated,
+					" percentuais alterados"
+				]
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+				className: "mt-1 text-[11px] text-muted-foreground",
+				children: [
+					result.matched,
+					" equipamentos localizados",
+					result.notFound > 0 ? ` · ${result.notFound} séries fora da frota` : "",
+					result.unmatchedIp > 0 ? ` · ${result.unmatchedIp} IPs não encontrados` : "",
+					result.withoutToner > 0 ? ` · ${result.withoutToner} sem leitura` : "",
+					result.conflicts > 0 ? ` · ${result.conflicts} com série e IP divergentes` : ""
+				]
+			})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+				type: "button",
+				onClick: onClose,
+				"aria-label": "Fechar aviso",
+				className: "rounded-md p-1 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground",
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(X, { className: "size-3.5" })
+			})]
+		})
+	});
+}
+//#endregion
+//#region src/lib/hpsd.ts
+var MAX_HEADER_SCAN = 25;
+var MAX_PROBE_ROWS = 30;
+var IP_PATTERN$1 = /^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/;
+var MAC_PATTERN = /^([0-9a-f]{2}[:-]){5}[0-9a-f]{2}$/i;
+var DATE_PATTERN = /^\d{1,4}[/\-.]\d{1,2}[/\-.]\d{1,4}([ T]\d{1,2}:\d{2}(:\d{2})?)?$/;
+var SERIAL_HEADERS = [
+	"numero de serie",
+	"nº de serie",
+	"no de serie",
+	"n de serie",
+	"num de serie",
+	"numeroserie",
+	"serial number",
+	"serialnumber",
+	"serial no",
+	"serial",
+	"serie",
+	"ns",
+	"nsr"
+];
+var IP_HEADERS = [
+	"endereco ip",
+	"endereço ip",
+	"ip address",
+	"ipaddress",
+	"endereco de ip",
+	"ip fixo",
+	"ip"
+];
+var IGNORED_REPORT_HEADERS = [
+	"hpsd",
+	"smart device services",
+	"relatorio",
+	"relatório",
+	"report",
+	"exportado em",
+	"exported",
+	"gerado em",
+	"pagina",
+	"página"
+];
+function normalizeHeader$1(value) {
+	return value.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, " ").replace(/[.:]+$/, "");
+}
+function isIpv4(value) {
+	const match = value.trim().match(IP_PATTERN$1);
+	if (!match) return false;
+	return match.slice(1).every((part) => Number(part) <= 255);
+}
+function isSerialLike(value) {
+	const text = value.trim();
+	if (text.length < 5 || text.length > 40) return false;
+	if (isIpv4(text) || MAC_PATTERN.test(text) || DATE_PATTERN.test(text)) return false;
+	if (!/^[A-Za-z0-9][A-Za-z0-9 _./-]*$/.test(text)) return false;
+	return text.replace(/\D/g, "").length >= 3;
+}
+function isMostlyNumeric(value) {
+	const text = value.trim();
+	if (text === "") return false;
+	if (isIpv4(text) || DATE_PATTERN.test(text)) return false;
+	return /^-?\d+(?:[.,]\d+)?%?$/.test(text.replace(/\s/g, ""));
+}
+function findHeaderRow(rows) {
+	let best = -1;
+	let bestScore = 0;
+	const limit = Math.min(rows.length, MAX_HEADER_SCAN);
+	for (let index = 0; index < limit; index += 1) {
+		const cells = rows[index].map(normalizeHeader$1);
+		const serial = cells.some((cell) => SERIAL_HEADERS.some((candidate) => cell === candidate));
+		const ip = cells.some((cell) => IP_HEADERS.some((candidate) => cell === candidate));
+		if (!serial && !ip) continue;
+		const score = serial && ip ? 3 : ip ? 2 : 1;
+		if (score > bestScore) {
+			bestScore = score;
+			best = index;
+		}
+	}
+	return best;
+}
+function isNoiseRow(cells) {
+	const joined = cells.map(normalizeHeader$1).join(" ").trim();
+	if (joined === "") return true;
+	if (IGNORED_REPORT_HEADERS.some((marker) => joined.includes(marker))) return true;
+	return false;
+}
+function firstDataRow(rows, from) {
+	for (let index = from; index < rows.length; index += 1) if (rows[index].map((cell) => String(cell ?? "").trim()).some((cell) => cell !== "")) return index;
+	return Math.min(from, Math.max(rows.length - 1, 0));
+}
+/**
+* Descobre quais colunas guardam o número de série, o IP e o percentual de
+* toner — pelo cabeçalho quando existir e pela forma dos dados nas primeiras
+* linhas. Assim funciona com a planilha do HPSD, que vem em ordem diferente.
+*/
+function detectLayout(rows) {
+	const dataStart = firstDataRow(rows, 0);
+	const probe = rows.slice(dataStart, dataStart + MAX_PROBE_ROWS);
+	const depth = probe.reduce((max, row) => Math.max(max, row.length), 0);
+	const stats = Array.from({ length: depth + 1 }, () => ({
+		ip: 0,
+		serial: 0,
+		mac: 0,
+		percent: 0,
+		numeric: 0
+	}));
+	for (const row of probe) {
+		const seen = /* @__PURE__ */ new Set();
+		row.forEach((cell, index) => {
+			const value = String(cell ?? "").trim();
+			if (value === "" || stats[index] === void 0) return;
+			if (isIpv4(value)) stats[index].ip += 1;
+			if (MAC_PATTERN.test(value)) stats[index].mac += 1;
+			if (isSerialLike(value) && !seen.has(value)) {
+				seen.add(value);
+				stats[index].serial += 1;
+			}
+			if (parsePercent(value) !== null) stats[index].percent += 1;
+			if (isMostlyNumeric(value)) stats[index].numeric += 1;
+		});
+	}
+	const sampleSize = Math.max(probe.length, 1);
+	const ipColumn = stats.findIndex((stat) => stat.ip >= Math.ceil(sampleSize / 2));
+	const serialColumn = stats.reduce((best, stat, index) => index !== ipColumn && stat.mac === 0 && stat.serial > (stats[best]?.serial ?? -1) ? index : best, -1);
+	let tonerColumn = -1;
+	let tonerScore = 0;
+	stats.forEach((stat, index) => {
+		if (index === ipColumn || index === serialColumn) return;
+		if (stat.numeric === 0 || stat.ip > 0 || stat.mac > 0) return;
+		if (stat.numeric / sampleSize > .5 && (tonerScore === 0 || stat.numeric < tonerScore)) {
+			tonerScore = stat.numeric;
+			tonerColumn = index;
+		}
+	});
+	return {
+		serialColumn,
+		ipColumn,
+		tonerColumn
+	};
+}
+/** Lê a planilha e devolve série, IP e toner linha por linha. */
+function readHpsdWorkbook(rows) {
+	const headerRow = findHeaderRow(rows);
+	const dataStart = firstDataRow(rows, headerRow >= 0 ? headerRow + 1 : 0);
+	const layout = detectLayout(rows);
+	const seen = /* @__PURE__ */ new Map();
+	const entries = [];
+	let withoutSerial = 0;
+	let duplicates = 0;
+	for (let index = dataStart; index < rows.length; index += 1) {
+		const cells = rows[index].map((cell) => String(cell ?? "").trim());
+		if (isNoiseRow(cells)) continue;
+		const serial = layout.serialColumn >= 0 ? cells[layout.serialColumn] ?? "" : "";
+		const ip = layout.ipColumn >= 0 ? cells[layout.ipColumn] ?? "" : "";
+		const tonerRaw = layout.tonerColumn >= 0 ? cells[layout.tonerColumn] ?? "" : "";
+		if (serial === "" && ip === "" && tonerRaw === "") continue;
+		if (serial === "") {
+			withoutSerial += 1;
+			continue;
+		}
+		const key = serial.toUpperCase();
+		if (seen.has(key)) {
+			duplicates += 1;
+			continue;
+		}
+		seen.set(key, entries.length);
+		entries.push({
+			serial,
+			ip: isIpv4(ip) ? ip : "",
+			toner: parsePercent(tonerRaw)
+		});
+	}
+	const columns = headerRow >= 0 ? rows[headerRow].map((cell) => String(cell ?? "").trim()) : [];
+	return {
+		headerRow,
+		firstDataRow: dataStart,
+		totalRows: entries.length,
+		layout,
+		entries,
+		withToner: entries.filter((entry) => entry.toner !== null).length,
+		withoutSerial,
+		duplicates,
+		columns
+	};
+}
+function readSpreadsheetRows(buffer) {
+	const workbook = readSync(buffer, { type: "array" });
+	const firstSheet = workbook.SheetNames[0];
+	if (!firstSheet) throw new Error("A planilha não possui abas.");
+	const worksheet = workbook.Sheets[firstSheet];
+	const cleaned = utils.sheet_to_json(worksheet, {
+		header: 1,
+		raw: false,
+		defval: "",
+		blankrows: false
+	}).map((row) => Array.isArray(row) ? row.map((cell) => String(cell ?? "")) : []).filter((row) => row.some((cell) => String(cell).trim() !== ""));
+	if (cleaned.length === 0) throw new Error("Nenhuma linha com dados foi encontrada no arquivo.");
+	return cleaned;
 }
 //#endregion
 //#region src/components/fleet/import-modal.tsx
@@ -55922,7 +56506,7 @@ function rowsToPrinters(sheet) {
 		};
 	});
 }
-function ImportModal({ open, onClose, onImport, onRestoreDemo, busy }) {
+function ImportModal({ open, onClose, onImport, onRestoreDemo, onHpsdDetected, hpsd, hpsdFileName, onOpenHpsd, onClearHpsd, busy }) {
 	const [sheet, setSheet] = (0, import_react.useState)(null);
 	const [fileName, setFileName] = (0, import_react.useState)("");
 	const [error, setError] = (0, import_react.useState)("");
@@ -55933,18 +56517,19 @@ function ImportModal({ open, onClose, onImport, onRestoreDemo, busy }) {
 	const handleFile = async (file) => {
 		setError("");
 		try {
-			const workbook = readSync(await file.arrayBuffer(), { type: "array" });
-			const firstSheet = workbook.SheetNames[0];
-			if (!firstSheet) throw new Error("A planilha não possui abas.");
-			const worksheet = workbook.Sheets[firstSheet];
-			const cleaned = utils.sheet_to_json(worksheet, {
-				header: 1,
-				raw: false,
-				defval: "",
-				blankrows: false
-			}).map((row) => Array.isArray(row) ? row.map((cell) => String(cell ?? "")) : []).filter((row) => row.some((cell) => String(cell).trim() !== ""));
-			if (cleaned.length === 0) throw new Error("Nenhuma linha com dados foi encontrada no arquivo.");
-			setSheet(parseWorkbookRows(cleaned));
+			const cleaned = readSpreadsheetRows(await file.arrayBuffer());
+			const hpsdReading = readHpsdWorkbook(cleaned);
+			const foundUsefulColumns = hpsdReading.layout.serialColumn >= 0 || hpsdReading.layout.ipColumn >= 0;
+			const missingLayoutColumns = hpsdReading.layout.serialColumn < 0 || hpsdReading.layout.ipColumn < 0;
+			const parsedSheet = parseWorkbookRows(cleaned);
+			const parsedValid = parsedSheet.rows.filter((row) => row.valid).length;
+			if (foundUsefulColumns && hpsdReading.withToner > 0 && (missingLayoutColumns || parsedValid < hpsdReading.withToner || hpsdReading.withToner >= parsedValid)) {
+				onHpsdDetected(hpsdReading, file.name);
+				setSheet(null);
+				setFileName(file.name);
+				return;
+			}
+			setSheet(parsedSheet);
 			setFileName(file.name);
 		} catch (cause) {
 			setError(cause instanceof Error ? cause.message : "Não foi possível ler o arquivo. Verifique se é um .xlsx, .xls ou .csv válido.");
@@ -55960,10 +56545,10 @@ function ImportModal({ open, onClose, onImport, onRestoreDemo, busy }) {
 					className: "flex items-start justify-between gap-4 border-b border-border px-5 py-4",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h2", {
 						className: "flex items-center gap-2 text-base font-bold tracking-tight text-foreground",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileSpreadsheet, { className: "size-4 text-brand" }), "Importar planilha"]
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileSpreadsheet, { className: "size-4 text-brand" }), "Atualização pela planilha"]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "mt-0.5 text-xs text-muted-foreground",
-						children: "Colunas esperadas: A Série, B Modelo, C IP, D Localização, E Status, F Toner (%)."
+						children: "Envie a planilha baixada do painel (ou a do HPSD): o sistema acha sozinho as colunas de Série, IP e Toner e atualiza só os percentuais, sem apagar a frota. O modelo A Série, B Modelo, C IP, D Localização, E Status, F Toner (%) substitui a frota inteira."
 					})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 						type: "button",
 						onClick: onClose,
@@ -56016,6 +56601,13 @@ function ImportModal({ open, onClose, onImport, onRestoreDemo, busy }) {
 						error ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 							className: "flex items-start gap-2 rounded-lg border border-critical/30 bg-critical/8 px-3 py-2 text-xs font-medium text-critical",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TriangleAlert, { className: "mt-0.5 size-3.5 shrink-0" }), error]
+						}) : null,
+						hpsd ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(HpsdCard, {
+							reading: hpsd,
+							fileName: hpsdFileName,
+							busy,
+							onOpen: onOpenHpsd,
+							onClear: onClearHpsd
 						}) : null,
 						sheet ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -56173,7 +56765,7 @@ function ImportModal({ open, onClose, onImport, onRestoreDemo, busy }) {
 					className: "flex flex-wrap items-center justify-between gap-3 border-t border-border px-5 py-3.5",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "text-[11px] text-muted-foreground",
-						children: "A importação substitui a frota atual pelas linhas válidas do arquivo."
+						children: "A planilha com os percentuais atualiza apenas o que mudou. O modelo A–F substitui a frota pelas linhas válidas do arquivo."
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "flex gap-2",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
@@ -56746,6 +57338,10 @@ function Dashboard() {
 	const [sort, setSort] = (0, import_react.useState)("criticidade");
 	const [importOpen, setImportOpen] = (0, import_react.useState)(false);
 	const [openTopic, setOpenTopic] = (0, import_react.useState)(null);
+	const [hpsd, setHpsd] = (0, import_react.useState)(null);
+	const [hpsdFileName, setHpsdFileName] = (0, import_react.useState)("");
+	const [hpsdOpen, setHpsdOpen] = (0, import_react.useState)(false);
+	const [readingResult, setReadingResult] = (0, import_react.useState)(null);
 	const [busy, setBusy] = (0, import_react.useState)(false);
 	const [lastCheck, setLastCheck] = (0, import_react.useState)(() => (/* @__PURE__ */ new Date()).toISOString());
 	const filtered = printers.filter((printer) => matchesFilters(printer, filters, query));
@@ -56945,6 +57541,26 @@ function Dashboard() {
 			setBusy(false);
 		}
 	}
+	/** Atualiza só os percentuais, casando pela série e depois pelo IP. */
+	async function handleApplyReadings() {
+		if (!hpsd) return;
+		setBusy(true);
+		try {
+			const result = await updateTonerReadings({ data: { entries: hpsd.entries } });
+			setLastCheck((/* @__PURE__ */ new Date()).toISOString());
+			setHpsdOpen(false);
+			setHpsd(null);
+			setHpsdFileName("");
+			setImportOpen(false);
+			await reload();
+			setReadingResult(result);
+			toast.success(`${result.updated} percentuais de toner atualizados.`, { description: `${result.matched} equipamentos localizados pela série ou pelo IP.` });
+		} catch {
+			toast.error("Não foi possível atualizar os percentuais agora.");
+		} finally {
+			setBusy(false);
+		}
+	}
 	async function handleImport(sheet) {
 		setBusy(true);
 		try {
@@ -57059,17 +57675,29 @@ function Dashboard() {
 						})] })]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "flex flex-1 flex-wrap items-center justify-end gap-2",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-							variant: "outline",
-							className: "h-9 gap-1.5 text-xs",
-							onClick: () => setImportOpen(true),
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Upload, { className: "size-3.5" }), "Importar planilha"]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-							className: "h-9 gap-1.5 text-xs",
-							onClick: handleRefresh,
-							disabled: busy,
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, { className: busy ? "size-3.5 animate-spin" : "size-3.5" }), "Atualizar monitoramento"]
-						})]
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+								variant: "outline",
+								className: "h-9 gap-1.5 text-xs",
+								onClick: () => {
+									exportFleetSheet(printers, lastCheck);
+									toast.success("Planilha da frota baixada.", { description: "Edite o IP e os percentuais e reenvie para atualizar o sistema." });
+								},
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Download, { className: "size-3.5" }), "Baixar planilha (IP e %)"]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+								variant: "outline",
+								className: "h-9 gap-1.5 text-xs",
+								onClick: () => setImportOpen(true),
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Upload, { className: "size-3.5" }), "Atualizar com planilha"]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+								className: "h-9 gap-1.5 text-xs",
+								onClick: handleRefresh,
+								disabled: busy,
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, { className: busy ? "size-3.5 animate-spin" : "size-3.5" }), "Atualizar monitoramento"]
+							})
+						]
 					})]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 					className: "border-t border-border/70 bg-muted/40",
@@ -57088,10 +57716,73 @@ function Dashboard() {
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "flex min-w-0 flex-col gap-4",
 					children: [
+						readingResult ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ReadingResultBanner, {
+							result: readingResult,
+							onClose: () => setReadingResult(null)
+						}) : null,
+						hpsd ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(HpsdCard, {
+							reading: hpsd,
+							fileName: hpsdFileName,
+							busy,
+							onOpen: () => setHpsdOpen(true),
+							onClear: () => {
+								setHpsd(null);
+								setHpsdFileName("");
+							}
+						}) : null,
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
 							className: "grid grid-cols-2 gap-3 lg:grid-cols-3",
 							children: kpis.map((kpi) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(KpiCard, { kpi }, kpi.key))
 						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, { children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardHeader, {
+								title: "Frota de impressoras",
+								subtitle: "Série, modelo, IP, localização, status, toner e defeito de cada equipamento",
+								action: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+									className: "rounded-full bg-brand/10 px-2.5 py-1 text-[11px] font-bold text-brand",
+									children: [
+										filtered.length,
+										" de ",
+										printers.length
+									]
+								})
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex flex-wrap items-center gap-2 px-4 pt-3 pb-3",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "relative min-w-[200px] flex-1 sm:max-w-xs",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Search, { className: "pointer-events-none absolute top-1/2 left-2.5 size-3.5 -translate-y-1/2 text-muted-foreground" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+										value: query,
+										onChange: (event) => setQuery(event.target.value),
+										placeholder: "Série, modelo ou IP",
+										"aria-label": "Pesquisa na frota",
+										className: "h-9 pl-8 text-xs"
+									})]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+									variant: "outline",
+									size: "sm",
+									className: "h-9 text-xs",
+									onClick: () => {
+										setFilters(EMPTY_FILTERS);
+										setQuery("");
+									},
+									children: "Limpar filtros"
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PrintersTable, {
+								printers: filtered,
+								filters,
+								onFiltersChange: setFilters,
+								query,
+								onQueryChange: setQuery,
+								sort,
+								onSortChange: setSort,
+								onDefectChange: handleDefectChange,
+								onBulkDefect: handleBulkDefect,
+								onAutoDefects: handleAutoDefects,
+								embedded: true
+							})
+						] }),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(StatusDonut, {
 							data: statusData,
 							total: printers.length
@@ -57339,8 +58030,28 @@ function Dashboard() {
 				onClose: () => setImportOpen(false),
 				onImport: handleImport,
 				onRestoreDemo: handleRestoreDemo,
+				onHpsdDetected: (reading, fileName) => {
+					setHpsd(reading);
+					setHpsdFileName(fileName);
+					setReadingResult(null);
+					toast.success("Planilha do HPSD reconhecida.", { description: `${reading.withToner} leituras de toner prontas para atualizar.` });
+				},
+				hpsd,
+				hpsdFileName,
+				onOpenHpsd: () => setHpsdOpen(true),
+				onClearHpsd: () => {
+					setHpsd(null);
+					setHpsdFileName("");
+				},
 				busy
-			})
+			}),
+			hpsdOpen && hpsd ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(HpsdConfirmDialog, {
+				reading: hpsd,
+				fileName: hpsdFileName,
+				busy,
+				onClose: () => setHpsdOpen(false),
+				onConfirm: handleApplyReadings
+			}) : null
 		]
 	});
 }

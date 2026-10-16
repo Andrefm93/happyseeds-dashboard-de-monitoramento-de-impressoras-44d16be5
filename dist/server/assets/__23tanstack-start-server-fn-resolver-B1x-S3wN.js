@@ -1075,35 +1075,39 @@ function useSelector(source, selector = (s) => s, options) {
 var manifest = {
 	"1166d4612b95decf3dad539e34e4264d2540b80d4de43a9e842b7e565559a689": {
 		functionName: "setPrinterDefect_createServerFn_handler",
-		importer: () => import("./printers.functions-x8tjrWOH.js")
+		importer: () => import("./printers.functions-BTugdDN_.js")
 	},
 	"3aebd270ef9e7fcbfacdf8be5797c31697c13369d3a2eaafd21de456bf760817": {
 		functionName: "restoreDemoFleet_createServerFn_handler",
-		importer: () => import("./printers.functions-x8tjrWOH.js")
+		importer: () => import("./printers.functions-BTugdDN_.js")
 	},
 	"62b36dc5bc9362926ece3a1418be83af892d84259f426ebed17afbccbe3c75f1": {
 		functionName: "setDefectsInBulk_createServerFn_handler",
-		importer: () => import("./printers.functions-x8tjrWOH.js")
+		importer: () => import("./printers.functions-BTugdDN_.js")
+	},
+	"6b2fdd34560bee0111c535bab1ae91a50cfc275f950675bdec755a39af021309": {
+		functionName: "updateTonerReadings_createServerFn_handler",
+		importer: () => import("./printers.functions-BTugdDN_.js")
 	},
 	"8c84a435ed3f19e2dcb89c6f0e0aa7a383805418e2c2cfcaf1c08838a0bac92b": {
 		functionName: "fetchPrinters_createServerFn_handler",
-		importer: () => import("./printers.functions-x8tjrWOH.js")
+		importer: () => import("./printers.functions-BTugdDN_.js")
 	},
 	"afbb5c7cf525d3c99e6d2bd8fa673987d066beff12ac4e18ab287ce47977807a": {
 		functionName: "fetchPrinterCount_createServerFn_handler",
-		importer: () => import("./printers.functions-x8tjrWOH.js")
+		importer: () => import("./printers.functions-BTugdDN_.js")
 	},
 	"cf1e31d986bbca475fe1dd388f35a3da9ddf0a2bf23ad5f68a24648268515d21": {
 		functionName: "runAutoDefects_createServerFn_handler",
-		importer: () => import("./printers.functions-x8tjrWOH.js")
+		importer: () => import("./printers.functions-BTugdDN_.js")
 	},
 	"d68515dbef9e125a873359cce2ee0c80c477fe70b3616c223f13b8fae8df8a56": {
 		functionName: "importPrinterRows_createServerFn_handler",
-		importer: () => import("./printers.functions-x8tjrWOH.js")
+		importer: () => import("./printers.functions-BTugdDN_.js")
 	},
 	"e25bbabfd6b556222063d16dec5a26362549ee932c87b7b1d5ff0876fdb8e91c": {
 		functionName: "refreshPrinterMonitoring_createServerFn_handler",
-		importer: () => import("./printers.functions-x8tjrWOH.js")
+		importer: () => import("./printers.functions-BTugdDN_.js")
 	}
 };
 async function getServerFnById(id, access) {

@@ -128,6 +128,7 @@ export function PrintersTable({
   onDefectChange,
   onBulkDefect,
   onAutoDefects,
+  embedded = false,
 }: {
   printers: FleetPrinter[]
   filters: FleetFilters
@@ -139,6 +140,8 @@ export function PrintersTable({
   onDefectChange: (id: number, defect: string, source: "manual") => void
   onBulkDefect: (ids: number[], defect: string) => void
   onAutoDefects: (ids: number[]) => void
+  /** Quando true, a tabela é exibida dentro de um cartão já existente. */
+  embedded?: boolean
 }) {
   const [showFilters, setShowFilters] = useState(false)
   const [bulkDefect, setBulkDefect] = useState<string>("Operando Normalmente")
@@ -154,55 +157,59 @@ export function PrintersTable({
 
   const allIds = sorted.map((printer) => printer.id)
 
-  return (
-    <Card>
-      <CardHeader
-        title="Frota de impressoras"
-        subtitle={`${sorted.length} de ${printers.length} equipamentos exibidos`}
-        action={
-          <div className="flex flex-wrap items-center gap-2">
-            <div className="relative">
-              <Search className="pointer-events-none absolute top-1/2 left-2.5 size-3.5 -translate-y-1/2 text-muted-foreground" />
-              <Input
-                value={query}
-                onChange={(event) => onQueryChange(event.target.value)}
-                placeholder="Série, modelo ou IP"
-                aria-label="Pesquisar por série, modelo ou IP"
-                className="h-8 w-52 pl-8 text-xs"
-              />
-            </div>
-            <Button
-              variant="outline"
-              size="sm"
-              className="h-8 gap-1.5 text-xs"
-              onClick={() => setShowFilters((value) => !value)}
-            >
-              <ListFilter className="size-3.5" />
-              Filtros
-              {activeFilterCount > 0 ? (
-                <span className="rounded-full bg-brand px-1.5 text-[10px] font-bold text-brand-foreground">
-                  {activeFilterCount}
-                </span>
-              ) : null}
-            </Button>
-            <div className="relative">
-              <ArrowDownUp className="pointer-events-none absolute top-1/2 left-2.5 size-3.5 -translate-y-1/2 text-muted-foreground" />
-              <select
-                aria-label="Ordenar por"
-                value={sort}
-                onChange={(event) => onSortChange(event.target.value as SortMode)}
-                className="h-8 appearance-none rounded-md border border-input bg-background pr-2 pl-8 text-xs font-medium text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              >
-                {SORT_OPTIONS.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
-        }
-      />
+  const toolbar = (
+    <div className="flex flex-wrap items-center gap-2">
+      {embedded ? null : (
+        <div className="relative">
+          <Search className="pointer-events-none absolute top-1/2 left-2.5 size-3.5 -translate-y-1/2 text-muted-foreground" />
+          <Input
+            value={query}
+            onChange={(event) => onQueryChange(event.target.value)}
+            placeholder="Série, modelo ou IP"
+            aria-label="Pesquisar por série, modelo ou IP"
+            className="h-8 w-52 pl-8 text-xs"
+          />
+        </div>
+      )}
+      <Button
+        variant="outline"
+        size="sm"
+        className="h-8 gap-1.5 text-xs"
+        onClick={() => setShowFilters((value) => !value)}
+      >
+        <ListFilter className="size-3.5" />
+        Filtros
+        {activeFilterCount > 0 ? (
+          <span className="rounded-full bg-brand px-1.5 text-[10px] font-bold text-brand-foreground">
+            {activeFilterCount}
+          </span>
+        ) : null}
+      </Button>
+      <div className="relative">
+        <ArrowDownUp className="pointer-events-none absolute top-1/2 left-2.5 size-3.5 -translate-y-1/2 text-muted-foreground" />
+        <select
+          aria-label="Ordenar por"
+          value={sort}
+          onChange={(event) => onSortChange(event.target.value as SortMode)}
+          className="h-8 appearance-none rounded-md border border-input bg-background pr-2 pl-8 text-xs font-medium text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        >
+          {SORT_OPTIONS.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+      </div>
+    </div>
+  )
+
+  const body = (
+    <>
+      {embedded ? (
+        <div className="flex flex-wrap items-center justify-end gap-2 px-4 pt-3">
+          {toolbar}
+        </div>
+      ) : null}
 
       {showFilters ? (
         <div className="grid gap-2 border-b border-border bg-muted/40 px-4 py-3 sm:grid-cols-2 lg:grid-cols-5">
@@ -312,14 +319,14 @@ export function PrintersTable({
           <table className="w-full min-w-[1080px] border-collapse text-left">
             <thead>
               <tr className="border-b border-border bg-muted/40 text-[10px] font-semibold tracking-wide text-muted-foreground uppercase">
-                <th className="px-3 py-2.5">Série</th>
-                <th className="px-3 py-2.5">Modelo</th>
-                <th className="px-3 py-2.5">IP</th>
-                <th className="px-3 py-2.5">Localização</th>
-                <th className="px-3 py-2.5">Status</th>
-                <th className="px-3 py-2.5">Toner %</th>
-                <th className="px-3 py-2.5">Última atualização</th>
-                <th className="px-3 py-2.5">Defeito encontrado</th>
+                <th className="px-3 py-2">Série</th>
+                <th className="px-3 py-2">Modelo</th>
+                <th className="px-3 py-2">IP</th>
+                <th className="px-3 py-2">Localização</th>
+                <th className="px-3 py-2">Status</th>
+                <th className="px-3 py-2">Toner %</th>
+                <th className="px-3 py-2">Última atualização</th>
+                <th className="px-3 py-2">Defeito encontrado</th>
               </tr>
             </thead>
             <tbody>
@@ -338,7 +345,7 @@ export function PrintersTable({
                       rowTone(printer),
                     )}
                   >
-                    <td className="px-3 py-2.5">
+                    <td className="px-3 py-2">
                       <div className="flex items-center gap-1.5">
                         {criticalZero || criticalLow ? (
                           <AlertTriangle
@@ -365,16 +372,16 @@ export function PrintersTable({
                     <td className="max-w-[280px] px-3 py-2.5 text-xs text-foreground">
                       {printer.location || "—"}
                     </td>
-                    <td className="px-3 py-2.5">
+                    <td className="px-3 py-2">
                       <StatusChip status={printer.status} />
                     </td>
-                    <td className="px-3 py-2.5">
+                    <td className="px-3 py-2">
                       <TonerCell printer={printer} />
                     </td>
                     <td className="px-3 py-2.5 text-xs whitespace-nowrap text-muted-foreground">
                       {formatDateBr(printer.lastCheck)}
                     </td>
-                    <td className="px-3 py-2.5">
+                    <td className="px-3 py-2">
                       <div className="flex items-center gap-1.5">
                         <select
                           value={printer.defect}
@@ -414,6 +421,19 @@ export function PrintersTable({
           </table>
         </div>
       )}
+    </>
+  )
+
+  if (embedded) return body
+
+  return (
+    <Card>
+      <CardHeader
+        title="Frota de impressoras"
+        subtitle={`${sorted.length} de ${printers.length} equipamentos exibidos`}
+        action={toolbar}
+      />
+      {body}
     </Card>
   )
 }

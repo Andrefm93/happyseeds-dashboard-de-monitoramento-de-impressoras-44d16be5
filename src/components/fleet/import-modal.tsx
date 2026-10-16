@@ -311,8 +311,9 @@ export function ImportModal({
       const buffer = await file.arrayBuffer()
       const cleaned = readSpreadsheetRows(buffer)
 
-      // A planilha do HPSD vem em outro formato: a leitura é feita por coluna
-      // reconhecida (série, IP e toner), sem exigir a ordem A–F.
+      // A planilha do HPSD e a planilha baixada do próprio painel têm o mesmo
+      // comportamento: a leitura é feita por coluna reconhecida (série, IP e
+      // toner), sem exigir a ordem A–F, e só os percentuais são atualizados.
       const hpsdReading = readHpsdWorkbook(cleaned)
       const foundUsefulColumns =
         hpsdReading.layout.serialColumn >= 0 ||
@@ -325,7 +326,9 @@ export function ImportModal({
       if (
         foundUsefulColumns &&
         hpsdReading.withToner > 0 &&
-        (missingLayoutColumns || parsedValid < hpsdReading.withToner)
+        (missingLayoutColumns ||
+          parsedValid < hpsdReading.withToner ||
+          hpsdReading.withToner >= parsedValid)
       ) {
         onHpsdDetected(hpsdReading, file.name)
         setSheet(null)
@@ -352,12 +355,13 @@ export function ImportModal({
           <div>
             <h2 className="flex items-center gap-2 text-base font-bold tracking-tight text-foreground">
               <FileSpreadsheet className="size-4 text-brand" />
-              Importar planilha
+              Atualização pela planilha
             </h2>
             <p className="mt-0.5 text-xs text-muted-foreground">
-              Duas formas de atualizar: a planilha do HPSD (o painel acha sozinho
-              as colunas de Série, IP e Toner) ou o modelo A Série, B Modelo, C
-              IP, D Localização, E Status, F Toner (%).
+              Envie a planilha baixada do painel (ou a do HPSD): o sistema acha
+              sozinho as colunas de Série, IP e Toner e atualiza só os
+              percentuais, sem apagar a frota. O modelo A Série, B Modelo, C IP,
+              D Localização, E Status, F Toner (%) substitui a frota inteira.
             </p>
           </div>
           <button
@@ -572,7 +576,8 @@ export function ImportModal({
 
         <footer className="flex flex-wrap items-center justify-between gap-3 border-t border-border px-5 py-3.5">
           <p className="text-[11px] text-muted-foreground">
-            A importação substitui a frota atual pelas linhas válidas do arquivo.
+            A planilha com os percentuais atualiza apenas o que mudou. O modelo
+            A–F substitui a frota pelas linhas válidas do arquivo.
           </p>
           <div className="flex gap-2">
             <Button variant="outline" onClick={onClose}>

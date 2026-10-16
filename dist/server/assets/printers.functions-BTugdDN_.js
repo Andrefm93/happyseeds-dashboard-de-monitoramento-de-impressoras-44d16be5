@@ -7835,6 +7835,88 @@ async function reapplyAutoDefects() {
 		return updated;
 	});
 }
+function normKey(value) {
+	return value.trim().toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+/**
+* Atualiza apenas os percentuais de toner, casando cada linha pela série e,
+* quando não houver série, pelo IP. Nada é apagado: a frota continua igual.
+*/
+async function applyReadings(entries) {
+	const result = {
+		matched: 0,
+		updated: 0,
+		notFound: 0,
+		unmatchedIp: 0,
+		withoutToner: 0,
+		ignored: 0,
+		conflicts: 0
+	};
+	const keyed = entries.filter((entry) => (entry.serial ?? "").trim() !== "" || (entry.ip ?? "").trim() !== "");
+	result.ignored = entries.length - keyed.length;
+	if (keyed.length === 0) return result;
+	return withDatabase(async (db) => {
+		const rows = await db.select().from(printers);
+		const bySerial = /* @__PURE__ */ new Map();
+		const byIp = /* @__PURE__ */ new Map();
+		for (const row of rows) {
+			bySerial.set(normKey(row.serialNumber), row);
+			const ip = (row.ip ?? "").trim();
+			if (ip !== "") byIp.set(ip, row);
+		}
+		const today = (/* @__PURE__ */ new Date()).toISOString().slice(0, 10);
+		const touched = /* @__PURE__ */ new Map();
+		for (const entry of keyed) {
+			const serial = (entry.serial ?? "").trim();
+			const ip = (entry.ip ?? "").trim();
+			const bySerialRow = serial === "" ? void 0 : bySerial.get(normKey(serial));
+			const byIpRow = ip === "" ? void 0 : byIp.get(ip);
+			if (serial !== "" && bypassConflict(bySerialRow, byIpRow, serial, ip)) {
+				result.conflicts += 1;
+				continue;
+			}
+			const row = bySerialRow ?? byIpRow;
+			if (!row) {
+				if (serial !== "") result.notFound += 1;
+				else result.unmatchedIp += 1;
+				continue;
+			}
+			result.matched += 1;
+			if (entry.toner === null) {
+				result.withoutToner += 1;
+				continue;
+			}
+			touched.set(row.id, entry.toner);
+		}
+		for (const row of rows) {
+			if (!touched.has(row.id)) continue;
+			const nextToner = touched.get(row.id) ?? null;
+			const monitoring = row.monitoring;
+			const drums = row.drumPercent;
+			const keepsManual = row.defectSource === "manual" && row.defect.trim() !== "";
+			const defect = keepsManual ? row.defect : autoDefect({
+				monitoring,
+				toner: nextToner,
+				drums,
+				ip: row.ip ?? "",
+				lastCheck: today
+			});
+			await db.update(printers).set({
+				tonerPercent: nextToner,
+				defect,
+				defectSource: keepsManual ? "manual" : "auto",
+				lastCheck: today,
+				updatedAt: /* @__PURE__ */ new Date()
+			}).where(eq(printers.id, row.id));
+			if (row.tonerPercent !== nextToner) result.updated += 1;
+		}
+		return result;
+	});
+}
+/** Série e IP apontando para equipamentos diferentes: dado inconsistente. */
+function bypassConflict(bySerialRow, byIpRow, serial, ip) {
+	return serial !== "" && ip !== "" && bySerialRow !== void 0 && byIpRow !== void 0 && bySerialRow.id !== byIpRow.id;
+}
 //#endregion
 //#region src/lib/printers.functions.ts?tss-serverfn-split
 var printerInputSchema = object({
@@ -7906,5 +7988,17 @@ var runAutoDefects_createServerFn_handler = createServerRpc({
 	filename: "src/lib/printers.functions.ts"
 }, (opts) => runAutoDefects.__executeServer(opts));
 var runAutoDefects = createServerFn({ method: "POST" }).handler(runAutoDefects_createServerFn_handler, () => reapplyAutoDefects());
+var readingSchema = object({
+	serial: string().optional(),
+	ip: string().optional(),
+	toner: number().int().min(0).max(100).nullable()
+});
+/** Atualiza somente os percentuais, casando por série e depois por IP. */
+var updateTonerReadings_createServerFn_handler = createServerRpc({
+	id: "6b2fdd34560bee0111c535bab1ae91a50cfc275f950675bdec755a39af021309",
+	name: "updateTonerReadings",
+	filename: "src/lib/printers.functions.ts"
+}, (opts) => updateTonerReadings.__executeServer(opts));
+var updateTonerReadings = createServerFn({ method: "POST" }).validator(object({ entries: array(readingSchema).max(1e4) })).handler(updateTonerReadings_createServerFn_handler, ({ data }) => applyReadings(data.entries));
 //#endregion
-export { fetchPrinterCount_createServerFn_handler, fetchPrinters_createServerFn_handler, importPrinterRows_createServerFn_handler, refreshPrinterMonitoring_createServerFn_handler, restoreDemoFleet_createServerFn_handler, runAutoDefects_createServerFn_handler, setDefectsInBulk_createServerFn_handler, setPrinterDefect_createServerFn_handler };
+export { fetchPrinterCount_createServerFn_handler, fetchPrinters_createServerFn_handler, importPrinterRows_createServerFn_handler, refreshPrinterMonitoring_createServerFn_handler, restoreDemoFleet_createServerFn_handler, runAutoDefects_createServerFn_handler, setDefectsInBulk_createServerFn_handler, setPrinterDefect_createServerFn_handler, updateTonerReadings_createServerFn_handler };

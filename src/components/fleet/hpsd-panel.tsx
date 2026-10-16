@@ -38,7 +38,7 @@ export function HpsdCard({
         <div className="min-w-0">
           <p className="flex items-center gap-2 text-xs font-bold tracking-tight text-foreground">
             <FileSpreadsheet className="size-3.5 text-brand" />
-            Planilha do HPSD reconhecida
+            Planilha de percentuais reconhecida
           </p>
           <p className="mt-0.5 truncate text-[11px] text-muted-foreground">
             {fileName} · {reading.columns.length > 0 ? `${reading.columns.length} colunas` : "sem cabeçalho"} ·{" "}
@@ -159,7 +159,7 @@ export function HpsdConfirmDialog({
           <div>
             <h2 className="flex items-center gap-2 text-base font-bold tracking-tight text-foreground">
               <FileSpreadsheet className="size-4 text-brand" />
-              Atualizar toner pela planilha do HPSD
+              Atualizar percentuais pela planilha
             </h2>
             <p className="mt-0.5 text-xs text-muted-foreground">
               {fileName} · o painel casa cada linha pela{" "}

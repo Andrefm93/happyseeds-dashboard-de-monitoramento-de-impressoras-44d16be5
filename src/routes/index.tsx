@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { createFileRoute, useRouter } from "@tanstack/react-router"
 import { toast } from "sonner"
-import { RefreshCw, Search, Upload } from "lucide-react"
+import { Download, RefreshCw, Search, Upload } from "lucide-react"
 
 import {
   fetchPrinters,
@@ -53,7 +53,12 @@ import {
   TonerModule,
 } from "#/components/fleet/toner"
 import { TOPIC_ICONS, TopicList, type TopicItem, type TopicKey } from "#/components/fleet/topics"
-import { buildReports, exportAllReports, exportReport } from "#/lib/excel"
+import {
+  buildReports,
+  exportAllReports,
+  exportFleetSheet,
+  exportReport,
+} from "#/lib/excel"
 import { Button } from "#/components/ui/button"
 import { Input } from "#/components/ui/input"
 
@@ -426,10 +431,24 @@ function Dashboard() {
             <Button
               variant="outline"
               className="h-9 gap-1.5 text-xs"
+              onClick={() => {
+                exportFleetSheet(printers, lastCheck)
+                toast.success("Planilha da frota baixada.", {
+                  description:
+                    "Edite o IP e os percentuais e reenvie para atualizar o sistema.",
+                })
+              }}
+            >
+              <Download className="size-3.5" />
+              Baixar planilha (IP e %)
+            </Button>
+            <Button
+              variant="outline"
+              className="h-9 gap-1.5 text-xs"
               onClick={() => setImportOpen(true)}
             >
               <Upload className="size-3.5" />
-              Importar planilha
+              Atualizar com planilha
             </Button>
             <Button
               className="h-9 gap-1.5 text-xs"
@@ -476,6 +495,54 @@ function Dashboard() {
               <KpiCard key={kpi.key} kpi={kpi} />
             ))}
           </section>
+
+          <Card>
+            <CardHeader
+              title="Frota de impressoras"
+              subtitle="Série, modelo, IP, localização, status, toner e defeito de cada equipamento"
+              action={
+                <span className="rounded-full bg-brand/10 px-2.5 py-1 text-[11px] font-bold text-brand">
+                  {filtered.length} de {printers.length}
+                </span>
+              }
+            />
+            <div className="flex flex-wrap items-center gap-2 px-4 pt-3 pb-3">
+              <div className="relative min-w-[200px] flex-1 sm:max-w-xs">
+                <Search className="pointer-events-none absolute top-1/2 left-2.5 size-3.5 -translate-y-1/2 text-muted-foreground" />
+                <Input
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                  placeholder="Série, modelo ou IP"
+                  aria-label="Pesquisa na frota"
+                  className="h-9 pl-8 text-xs"
+                />
+              </div>
+              <Button
+                variant="outline"
+                size="sm"
+                className="h-9 text-xs"
+                onClick={() => {
+                  setFilters(EMPTY_FILTERS)
+                  setQuery("")
+                }}
+              >
+                Limpar filtros
+              </Button>
+            </div>
+            <PrintersTable
+              printers={filtered}
+              filters={filters}
+              onFiltersChange={setFilters}
+              query={query}
+              onQueryChange={setQuery}
+              sort={sort}
+              onSortChange={setSort}
+              onDefectChange={handleDefectChange}
+              onBulkDefect={handleBulkDefect}
+              onAutoDefects={handleAutoDefects}
+              embedded
+            />
+          </Card>
 
           <StatusDonut data={statusData} total={printers.length} />
 

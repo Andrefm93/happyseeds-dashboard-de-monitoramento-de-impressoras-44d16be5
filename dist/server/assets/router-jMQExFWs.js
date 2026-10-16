@@ -1,5 +1,5 @@
-import { A as getUrlScheme, B as rootRouteId, E as deepEqual, N as isDangerousProtocol, O as escapeHtml, P as isModuleNotFoundError, U as __exportAll, V as require_react, W as __toESM, _ as removeTrailingSlash, a as matchContext, b as trimPathLeft, d as reactUse, i as dummyMatchContext, k as functionalUpdate$1, l as useHydrated, m as cleanPath, o as useRouter, p as invariant, t as getServerFnById, u as require_jsx_runtime, x as trimPathRight } from "./__23tanstack-start-server-fn-resolver-So3CJ-MC.js";
-import { _ as createNonReactiveMutableStore, f as _getAssetMatches, m as RouterCore, n as ErrorComponent, o as getAssetCrossOrigin, r as appendUniqueUserTags, s as getScriptPreloadAttrs, u as resolveManifestCssLink, v as createNonReactiveReadonlyStore } from "./CatchBoundary-D77uwGiS.js";
+import { A as getUrlScheme, B as rootRouteId, E as deepEqual, N as isDangerousProtocol, O as escapeHtml, P as isModuleNotFoundError, U as __exportAll, V as require_react, W as __toESM, _ as removeTrailingSlash, a as matchContext, b as trimPathLeft, d as reactUse, i as dummyMatchContext, k as functionalUpdate$1, l as useHydrated, m as cleanPath, o as useRouter, p as invariant, t as getServerFnById, u as require_jsx_runtime, x as trimPathRight } from "./__23tanstack-start-server-fn-resolver-B1x-S3wN.js";
+import { _ as createNonReactiveMutableStore, f as _getAssetMatches, m as RouterCore, n as ErrorComponent, o as getAssetCrossOrigin, r as appendUniqueUserTags, s as getScriptPreloadAttrs, u as resolveManifestCssLink, v as createNonReactiveReadonlyStore } from "./CatchBoundary-BJ8mBvQs.js";
 import { _ as redirect, f as TSS_SERVER_FUNCTION, t as createServerFn } from "./createServerFn-BVCUSTuW.js";
 import { a as string, i as object, n as array, r as number, t as _enum } from "./schemas-BLwGkJWI.js";
 //#endregion
@@ -4267,7 +4267,7 @@ function HappySeedsInspector() {
 }
 //#endregion
 //#region src/styles.css?url
-var styles_default = "/assets/styles-BWe1tACb.css";
+var styles_default = "/assets/styles-D2KpuLh2.css";
 //#endregion
 //#region src/routes/__root.tsx
 "".trim();
@@ -4437,9 +4437,16 @@ var setDefectsInBulk = createServerFn({ method: "POST" }).validator(object({
 	source: _enum(["auto", "manual"])
 })).handler(createSsrRpc("62b36dc5bc9362926ece3a1418be83af892d84259f426ebed17afbccbe3c75f1"));
 createServerFn({ method: "POST" }).handler(createSsrRpc("cf1e31d986bbca475fe1dd388f35a3da9ddf0a2bf23ad5f68a24648268515d21"));
+var readingSchema = object({
+	serial: string().optional(),
+	ip: string().optional(),
+	toner: number().int().min(0).max(100).nullable()
+});
+/** Atualiza somente os percentuais, casando por série e depois por IP. */
+var updateTonerReadings = createServerFn({ method: "POST" }).validator(object({ entries: array(readingSchema).max(1e4) })).handler(createSsrRpc("6b2fdd34560bee0111c535bab1ae91a50cfc275f950675bdec755a39af021309"));
 //#endregion
 //#region src/routes/index.tsx
-var $$splitComponentImporter = () => import("./routes-CXOiU0kM.js");
+var $$splitComponentImporter = () => import("./routes-B_uY1EC-.js");
 var Route$1 = createFileRoute("/")({
 	loader: () => fetchPrinters(),
 	component: lazyRouteComponent($$splitComponentImporter, "component")
@@ -4482,4 +4489,4 @@ function getRouter() {
 	return router;
 }
 //#endregion
-export { restoreDemoFleet as a, getRouter, refreshPrinterMonitoring as i, Route$1 as n, setDefectsInBulk as o, importPrinterRows as r, setPrinterDefect as s, router_exports as t };
+export { restoreDemoFleet as a, updateTonerReadings as c, getRouter, refreshPrinterMonitoring as i, Route$1 as n, setDefectsInBulk as o, importPrinterRows as r, setPrinterDefect as s, router_exports as t };
