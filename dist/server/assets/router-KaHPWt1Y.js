@@ -4446,7 +4446,7 @@ var readingSchema = object({
 var updateTonerReadings = createServerFn({ method: "POST" }).validator(object({ entries: array(readingSchema).max(1e4) })).handler(createSsrRpc("6b2fdd34560bee0111c535bab1ae91a50cfc275f950675bdec755a39af021309"));
 //#endregion
 //#region src/routes/index.tsx
-var $$splitComponentImporter = () => import("./routes-B_uY1EC-.js");
+var $$splitComponentImporter = () => import("./routes-C4ZzHGPv.js");
 var Route$1 = createFileRoute("/")({
 	loader: () => fetchPrinters(),
 	component: lazyRouteComponent($$splitComponentImporter, "component")

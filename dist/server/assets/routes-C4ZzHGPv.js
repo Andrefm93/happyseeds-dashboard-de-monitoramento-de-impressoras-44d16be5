@@ -1,7 +1,7 @@
 import { H as __commonJSMin, U as __exportAll, V as require_react, W as __toESM, o as useRouter, r as require_with_selector$1, u as require_jsx_runtime } from "./__23tanstack-start-server-fn-resolver-B1x-S3wN.js";
 import { t as require_react_dom } from "./react-dom-CzANz2mh.js";
 import { c as parsePercent, i as averageToner, l as tonerBand, n as TONER_BAND_ORDER, o as formatDateBr, r as autoDefect, s as formatDateTimeBr, t as TONER_BAND_LABEL, u as DEFECT_OPTIONS } from "./fleet-CLVmqmue.js";
-import { a as restoreDemoFleet, c as updateTonerReadings, i as refreshPrinterMonitoring, n as Route, o as setDefectsInBulk, r as importPrinterRows, s as setPrinterDefect } from "./router-jMQExFWs.js";
+import { a as restoreDemoFleet, c as updateTonerReadings, i as refreshPrinterMonitoring, n as Route, o as setDefectsInBulk, r as importPrinterRows, s as setPrinterDefect } from "./router-KaHPWt1Y.js";
 //#region node_modules/.pnpm/sonner@2.0.8_@types+react@19.3.0_react-dom@19.3.0_react@19.3.0__react@19.3.0/node_modules/sonner/dist/index.mjs
 var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
 var import_react_dom = /* @__PURE__ */ __toESM(require_react_dom(), 1);
@@ -55765,7 +55765,7 @@ function downloadTemplate() {
 			"SERIE",
 			"MODELO",
 			"IP",
-			"LOCALIZACAO",
+			"APELIDO",
 			"STATUS",
 			"TONER (%)"
 		],
@@ -55807,44 +55807,35 @@ function downloadTemplate() {
 	writeFileSync(workbook, "modelo-impressoras.xlsx");
 }
 /**
-* Planilha de trabalho da frota: série, modelo, IP, toner (%) e cilindro (%).
+* Planilha de trabalho da frota no formato do modelo A–F:
+* A Série, B Modelo, C IP, D Apelido, E Status, F Toner (%).
 *
-* É o mesmo arquivo que pode ser editado e reenviado em "Atualizar com planilha":
-* o sistema casa pela série (ou pelo IP) e atualiza apenas os percentuais.
+* O arquivo baixado pode ser editado e reenviado em "Atualizar com planilha".
 */
 function exportFleetSheet(printers, timestampIso) {
 	const rows = [[
 		"SERIE",
 		"MODELO",
 		"IP",
-		"TONER (%)",
-		"CILINDRO (%)",
-		"LOCALIZACAO",
+		"APELIDO",
 		"STATUS",
-		"ULTIMA VERIFICACAO",
-		"DEFEITO ENCONTRADO"
+		"TONER (%)"
 	], ...printers.map((printer) => [
 		printer.serial,
 		printer.model,
 		printer.ip || "",
-		printer.toner === null ? "" : printer.toner,
-		printer.drums === null ? "" : printer.drums,
 		printer.location || "",
-		printer.status,
-		formatDateBr(printer.lastCheck),
-		printer.defect || ""
+		printer.monitoring,
+		printer.toner === null ? "" : printer.toner
 	])];
 	const worksheet = utils.aoa_to_sheet(rows);
 	worksheet["!cols"] = [
 		{ wch: 24 },
 		{ wch: 14 },
 		{ wch: 16 },
-		{ wch: 12 },
-		{ wch: 14 },
 		{ wch: 46 },
 		{ wch: 20 },
-		{ wch: 18 },
-		{ wch: 34 }
+		{ wch: 12 }
 	];
 	const workbook = utils.book_new();
 	utils.book_append_sheet(workbook, worksheet, "Impressoras");
@@ -56321,7 +56312,7 @@ function readSpreadsheetRows(buffer) {
 }
 //#endregion
 //#region src/components/fleet/import-modal.tsx
-/** Colunas esperadas, na ordem A–F pedida na especificação. */
+/** Colunas esperadas, na ordem A–F do modelo de planilha. */
 var EXPECTED_COLUMNS = [
 	{
 		key: "serial",
@@ -56341,7 +56332,7 @@ var EXPECTED_COLUMNS = [
 	{
 		key: "location",
 		letter: "D",
-		label: "Localização"
+		label: "Apelido"
 	},
 	{
 		key: "status",
@@ -56548,7 +56539,7 @@ function ImportModal({ open, onClose, onImport, onRestoreDemo, onHpsdDetected, h
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileSpreadsheet, { className: "size-4 text-brand" }), "Atualização pela planilha"]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "mt-0.5 text-xs text-muted-foreground",
-						children: "Envie a planilha baixada do painel (ou a do HPSD): o sistema acha sozinho as colunas de Série, IP e Toner e atualiza só os percentuais, sem apagar a frota. O modelo A Série, B Modelo, C IP, D Localização, E Status, F Toner (%) substitui a frota inteira."
+						children: "Envie a planilha baixada do painel (ou a do HPSD): o sistema acha sozinho as colunas de Série, IP e Toner e atualiza só os percentuais, sem apagar a frota. O modelo A Série, B Modelo, C IP, D Apelido, E Status, F Toner (%) substitui a frota inteira."
 					})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 						type: "button",
 						onClick: onClose,

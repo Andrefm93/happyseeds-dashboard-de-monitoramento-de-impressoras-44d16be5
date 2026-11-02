@@ -21,12 +21,12 @@ import {
 } from "#/lib/hpsd"
 import { cn } from "#/lib/utils"
 
-/** Colunas esperadas, na ordem A–F pedida na especificação. */
+/** Colunas esperadas, na ordem A–F do modelo de planilha. */
 export const EXPECTED_COLUMNS = [
   { key: "serial", letter: "A", label: "Série" },
   { key: "model", letter: "B", label: "Modelo" },
   { key: "ip", letter: "C", label: "IP" },
-  { key: "location", letter: "D", label: "Localização" },
+  { key: "location", letter: "D", label: "Apelido" },
   { key: "status", letter: "E", label: "Status" },
   { key: "toner", letter: "F", label: "Toner (%)" },
 ] as const
@@ -361,7 +361,7 @@ export function ImportModal({
               Envie a planilha baixada do painel (ou a do HPSD): o sistema acha
               sozinho as colunas de Série, IP e Toner e atualiza só os
               percentuais, sem apagar a frota. O modelo A Série, B Modelo, C IP,
-              D Localização, E Status, F Toner (%) substitui a frota inteira.
+              D Apelido, E Status, F Toner (%) substitui a frota inteira.
             </p>
           </div>
           <button

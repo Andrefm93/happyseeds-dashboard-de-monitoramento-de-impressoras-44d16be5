@@ -162,7 +162,7 @@ export function exportAllReports(
 /** Modelo de planilha com as colunas esperadas na importação. */
 export function downloadTemplate(): void {
   const rows: (string | number)[][] = [
-    ["SERIE", "MODELO", "IP", "LOCALIZACAO", "STATUS", "TONER (%)"],
+    ["SERIE", "MODELO", "IP", "APELIDO", "STATUS", "TONER (%)"],
     ["07NYBJMM20000G", "X4220", "10.35.7.104", "FAB RIO BRANCO - NOVOS PROJETOS", "Monitorada", 59],
     ["BRBST3B0BF", "E50145DN", "10.35.7.87", "FAB RIO BRANCO - BALANCA SAIDA W9", "Monitorada", 66],
     ["ZDEJB07M425FWB", "M4020", "10.35.0.245", "FAB RIO BRANCO - CONTROLE QUALIDADE", "Monitorada", 0],
@@ -182,39 +182,24 @@ export function downloadTemplate(): void {
 }
 
 /**
- * Planilha de trabalho da frota: série, modelo, IP, toner (%) e cilindro (%).
+ * Planilha de trabalho da frota no formato do modelo A–F:
+ * A Série, B Modelo, C IP, D Apelido, E Status, F Toner (%).
  *
- * É o mesmo arquivo que pode ser editado e reenviado em "Atualizar com planilha":
- * o sistema casa pela série (ou pelo IP) e atualiza apenas os percentuais.
+ * O arquivo baixado pode ser editado e reenviado em "Atualizar com planilha".
  */
 export function exportFleetSheet(
   printers: FleetPrinter[],
   timestampIso: string,
 ): void {
-  const headers = [
-    "SERIE",
-    "MODELO",
-    "IP",
-    "TONER (%)",
-    "CILINDRO (%)",
-    "LOCALIZACAO",
-    "STATUS",
-    "ULTIMA VERIFICACAO",
-    "DEFEITO ENCONTRADO",
-  ]
-
   const rows: (string | number)[][] = [
-    headers,
+    ["SERIE", "MODELO", "IP", "APELIDO", "STATUS", "TONER (%)"],
     ...printers.map((printer) => [
       printer.serial,
       printer.model,
       printer.ip || "",
-      printer.toner === null ? "" : printer.toner,
-      printer.drums === null ? "" : printer.drums,
       printer.location || "",
-      printer.status,
-      formatDateBr(printer.lastCheck),
-      printer.defect || "",
+      printer.monitoring,
+      printer.toner === null ? "" : printer.toner,
     ]),
   ]
 
@@ -223,12 +208,9 @@ export function exportFleetSheet(
     { wch: 24 },
     { wch: 14 },
     { wch: 16 },
-    { wch: 12 },
-    { wch: 14 },
     { wch: 46 },
     { wch: 20 },
-    { wch: 18 },
-    { wch: 34 },
+    { wch: 12 },
   ]
 
   const workbook = XLSX.utils.book_new()
