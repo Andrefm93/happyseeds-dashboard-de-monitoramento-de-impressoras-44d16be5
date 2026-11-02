@@ -10,6 +10,7 @@ import {
   restoreDemoFleet,
   setDefectsInBulk,
   setPrinterDefect,
+  setPrinterStatus,
   updateTonerReadings,
   type ReadingUpdateResult,
 } from "#/lib/printers.functions"
@@ -354,6 +355,25 @@ function Dashboard() {
     }
   }
 
+  /** Troca o status entre Monitorada e Fora de Monitoramento. */
+  async function handleStatusChange(
+    id: number,
+    status: "Monitorada" | "Fora de Monitoramento",
+  ) {
+    try {
+      await setPrinterStatus({ data: { id, status } })
+      setLastCheck(new Date().toISOString())
+      await reload()
+      toast.success(
+        status === "Fora de Monitoramento"
+          ? "Impressora colocada fora de monitoramento."
+          : "Impressora monitorada novamente.",
+      )
+    } catch {
+      toast.error("Não foi possível alterar o status.")
+    }
+  }
+
   async function handleDefectChange(id: number, defect: string, source: "manual") {
     try {
       await setPrinterDefect({ data: { id, defect, source } })
@@ -540,6 +560,7 @@ function Dashboard() {
               onDefectChange={handleDefectChange}
               onBulkDefect={handleBulkDefect}
               onAutoDefects={handleAutoDefects}
+              onStatusChange={handleStatusChange}
               embedded
             />
           </Card>
@@ -691,6 +712,7 @@ function Dashboard() {
           onDefectChange={handleDefectChange}
           onBulkDefect={handleBulkDefect}
           onAutoDefects={handleAutoDefects}
+          onStatusChange={handleStatusChange}
         />
       </InfoModal>
 

@@ -596,13 +596,14 @@ function tonerBand(toner) {
 }
 /**
 * Deriva o status operacional a partir da linha original + leitura de toner.
-* - "Não Monitorada" na planilha nunca reporta leitura => Fora de Monitoramento.
+* - "Não Monitorada" / "Fora de Monitoramento" => Fora de Monitoramento,
+*   mesmo que o equipamento ainda reporte leitura.
 * - Monitorada/BKP sem IP ou sem leitura => Necessita Verificação.
 */
 function deriveStatus(monitoring, toner, drums, defect) {
 	const normalized = monitoring.trim().toLowerCase();
 	const hasReading = toner !== null || drums !== null;
-	if (normalized.startsWith("não monitorada") || normalized.startsWith("nao monitorada")) return "Fora de Monitoramento";
+	if (normalized.startsWith("não monitorada") || normalized.startsWith("nao monitorada") || normalized.startsWith("fora de monitoramento") || normalized.startsWith("fora do monitoramento")) return "Fora de Monitoramento";
 	const communicationIssue = /sem comunica|falha de rede|equipamento desligado|sem leitura/i.test(defect);
 	if (normalized.startsWith("monitorada") && hasReading && !communicationIssue) return "Monitorada";
 	if (normalized.startsWith("monitorada") && !hasReading) return "Necessita Verificação";

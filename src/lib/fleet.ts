@@ -18,6 +18,8 @@ export interface FleetPrinter {
   toner: number | null
   drums: number | null
   lastCheck: string
+  /** Data e hora (ISO) da última alteração de status/leitura. */
+  lastCheckedAt: string
   defect: string
   defectSource: "auto" | "manual"
   sourceRow: number | null
@@ -52,7 +54,8 @@ export function tonerBand(toner: number | null): TonerBand {
 
 /**
  * Deriva o status operacional a partir da linha original + leitura de toner.
- * - "Não Monitorada" na planilha nunca reporta leitura => Fora de Monitoramento.
+ * - "Não Monitorada" / "Fora de Monitoramento" => Fora de Monitoramento,
+ *   mesmo que o equipamento ainda reporte leitura.
  * - Monitorada/BKP sem IP ou sem leitura => Necessita Verificação.
  */
 export function deriveStatus(
@@ -64,7 +67,12 @@ export function deriveStatus(
   const normalized = monitoring.trim().toLowerCase()
   const hasReading = toner !== null || drums !== null
 
-  if (normalized.startsWith("não monitorada") || normalized.startsWith("nao monitorada"))
+  if (
+    normalized.startsWith("não monitorada") ||
+    normalized.startsWith("nao monitorada") ||
+    normalized.startsWith("fora de monitoramento") ||
+    normalized.startsWith("fora do monitoramento")
+  )
     return "Fora de Monitoramento"
 
   const communicationIssue = /sem comunica|falha de rede|equipamento desligado|sem leitura/i.test(
@@ -184,6 +192,7 @@ export function seedToPrinter(
     toner: row.toner,
     drums: row.drums,
     lastCheck: row.lastCheck,
+    lastCheckedAt: "",
     defect:
       defect ||
       autoDefect({

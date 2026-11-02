@@ -30,6 +30,8 @@ export const printers = pgTable(
     drumPercent: integer("drum_percent"),
     /** Data da última verificação no formato ISO (yyyy-mm-dd). */
     lastCheck: text("last_check").notNull().default(""),
+    /** Data e hora da última alteração de status/leitura (ISO completo). */
+    lastCheckedAt: text("last_checked_at").notNull().default(""),
     /** Defeito encontrado — texto livre. */
     defect: text("defect").notNull().default(""),
     /** auto | manual — como o defeito foi preenchido. */

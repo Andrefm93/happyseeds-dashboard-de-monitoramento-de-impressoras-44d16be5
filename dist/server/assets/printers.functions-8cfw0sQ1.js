@@ -1,6 +1,6 @@
 import { f as TSS_SERVER_FUNCTION, t as createServerFn } from "./createServerFn-BVCUSTuW.js";
 import { a as string, i as object, n as array, r as number, t as _enum } from "./schemas-BLwGkJWI.js";
-import { a as deriveStatus, d as FLEET_SEED, r as autoDefect } from "./fleet-CLVmqmue.js";
+import { a as deriveStatus, d as FLEET_SEED, r as autoDefect } from "./fleet-Bg0wYNXV.js";
 import { env } from "cloudflare:workers";
 import Stream from "node:stream";
 import { EventEmitter } from "node:events";
@@ -7670,6 +7670,8 @@ var printers = pgTable("printers", {
 	drumPercent: integer("drum_percent"),
 	/** Data da última verificação no formato ISO (yyyy-mm-dd). */
 	lastCheck: text("last_check").notNull().default(""),
+	/** Data e hora da última alteração de status/leitura (ISO completo). */
+	lastCheckedAt: text("last_checked_at").notNull().default(""),
 	/** Defeito encontrado — texto livre. */
 	defect: text("defect").notNull().default(""),
 	/** auto | manual — como o defeito foi preenchido. */
@@ -7694,6 +7696,7 @@ function toFleetPrinter(row) {
 		toner: row.tonerPercent,
 		drums: row.drumPercent,
 		lastCheck: row.lastCheck ?? "",
+		lastCheckedAt: row.lastCheckedAt ?? "",
 		defect,
 		defectSource: row.defectSource === "manual" ? "manual" : "auto",
 		sourceRow: row.sourceRow ?? null
@@ -7797,6 +7800,7 @@ async function updatePrinterDefect(id, defect, source) {
 		return (await db.update(printers).set({
 			defect,
 			defectSource: source,
+			lastCheckedAt: nowIso(),
 			updatedAt: /* @__PURE__ */ new Date()
 		}).where(eq(printers.id, id)).returning({ id: printers.id })).length;
 	});
@@ -7807,6 +7811,7 @@ async function updateDefectsInBulk(ids, defect, source) {
 		return (await db.update(printers).set({
 			defect,
 			defectSource: source,
+			lastCheckedAt: nowIso(),
 			updatedAt: /* @__PURE__ */ new Date()
 		}).where(sql`${printers.id} in ${ids}`).returning({ id: printers.id })).length;
 	});
@@ -7833,6 +7838,40 @@ async function reapplyAutoDefects() {
 			}
 		}
 		return updated;
+	});
+}
+/** Momento (ISO) usado como "última verificação" das alterações manuais. */
+function nowIso() {
+	return (/* @__PURE__ */ new Date()).toISOString().replace(/\.\d{3}Z$/, "Z");
+}
+/**
+* Altera o status de monitoramento de uma impressora. "Fora de Monitoramento"
+* mantém o equipamento fora, mesmo que ainda reporte leitura; "Monitorada"
+* volta a participar do monitoramento.
+*/
+async function updatePrinterStatus(id, status) {
+	return withDatabase(async (db) => {
+		const [current] = await db.select().from(printers).where(eq(printers.id, id));
+		if (!current) return null;
+		const monitoring = status === "Fora de Monitoramento" ? "Fora de Monitoramento" : "Monitorada";
+		const today = (/* @__PURE__ */ new Date()).toISOString().slice(0, 10);
+		const keepsManual = current.defectSource === "manual" && current.defect.trim() !== "";
+		const defect = keepsManual ? current.defect : autoDefect({
+			monitoring,
+			toner: current.tonerPercent,
+			drums: current.drumPercent,
+			ip: current.ip ?? "",
+			lastCheck: today
+		});
+		const [updated] = await db.update(printers).set({
+			monitoring,
+			defect,
+			defectSource: keepsManual ? "manual" : "auto",
+			lastCheck: current.lastCheck || today,
+			lastCheckedAt: nowIso(),
+			updatedAt: /* @__PURE__ */ new Date()
+		}).where(eq(printers.id, id)).returning();
+		return updated ? toFleetPrinter(updated) : null;
 	});
 }
 function normKey(value) {
@@ -7906,6 +7945,7 @@ async function applyReadings(entries) {
 				defect,
 				defectSource: keepsManual ? "manual" : "auto",
 				lastCheck: today,
+				lastCheckedAt: nowIso(),
 				updatedAt: /* @__PURE__ */ new Date()
 			}).where(eq(printers.id, row.id));
 			if (row.tonerPercent !== nextToner) result.updated += 1;
@@ -7972,6 +8012,15 @@ var setPrinterDefect = createServerFn({ method: "POST" }).validator(object({
 	defect: string(),
 	source: _enum(["auto", "manual"])
 })).handler(setPrinterDefect_createServerFn_handler, ({ data }) => updatePrinterDefect(data.id, data.defect, data.source));
+var setPrinterStatus_createServerFn_handler = createServerRpc({
+	id: "836a72525ff901b345c0ca6754d76dc63fff65ead616ad826595209866b2547e",
+	name: "setPrinterStatus",
+	filename: "src/lib/printers.functions.ts"
+}, (opts) => setPrinterStatus.__executeServer(opts));
+var setPrinterStatus = createServerFn({ method: "POST" }).validator(object({
+	id: number().int(),
+	status: _enum(["Monitorada", "Fora de Monitoramento"])
+})).handler(setPrinterStatus_createServerFn_handler, ({ data }) => updatePrinterStatus(data.id, data.status));
 var setDefectsInBulk_createServerFn_handler = createServerRpc({
 	id: "62b36dc5bc9362926ece3a1418be83af892d84259f426ebed17afbccbe3c75f1",
 	name: "setDefectsInBulk",
@@ -8001,4 +8050,4 @@ var updateTonerReadings_createServerFn_handler = createServerRpc({
 }, (opts) => updateTonerReadings.__executeServer(opts));
 var updateTonerReadings = createServerFn({ method: "POST" }).validator(object({ entries: array(readingSchema).max(1e4) })).handler(updateTonerReadings_createServerFn_handler, ({ data }) => applyReadings(data.entries));
 //#endregion
-export { fetchPrinterCount_createServerFn_handler, fetchPrinters_createServerFn_handler, importPrinterRows_createServerFn_handler, refreshPrinterMonitoring_createServerFn_handler, restoreDemoFleet_createServerFn_handler, runAutoDefects_createServerFn_handler, setDefectsInBulk_createServerFn_handler, setPrinterDefect_createServerFn_handler, updateTonerReadings_createServerFn_handler };
+export { fetchPrinterCount_createServerFn_handler, fetchPrinters_createServerFn_handler, importPrinterRows_createServerFn_handler, refreshPrinterMonitoring_createServerFn_handler, restoreDemoFleet_createServerFn_handler, runAutoDefects_createServerFn_handler, setDefectsInBulk_createServerFn_handler, setPrinterDefect_createServerFn_handler, setPrinterStatus_createServerFn_handler, updateTonerReadings_createServerFn_handler };

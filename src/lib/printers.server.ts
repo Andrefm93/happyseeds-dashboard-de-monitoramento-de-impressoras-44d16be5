@@ -36,6 +36,7 @@ function toFleetPrinter(row: typeof printers.$inferSelect): FleetPrinter {
     toner: row.tonerPercent,
     drums: row.drumPercent,
     lastCheck: row.lastCheck ?? "",
+    lastCheckedAt: row.lastCheckedAt ?? "",
     defect,
     defectSource: row.defectSource === "manual" ? "manual" : "auto",
     sourceRow: row.sourceRow ?? null,
@@ -176,7 +177,12 @@ export async function updatePrinterDefect(
   return withDatabase(async (db) => {
     const result = await db
       .update(printers)
-      .set({ defect, defectSource: source, updatedAt: new Date() })
+      .set({
+        defect,
+        defectSource: source,
+        lastCheckedAt: nowIso(),
+        updatedAt: new Date(),
+      })
       .where(eq(printers.id, id))
       .returning({ id: printers.id })
     return result.length
@@ -192,7 +198,12 @@ export async function updateDefectsInBulk(
   return withDatabase(async (db) => {
     const result = await db
       .update(printers)
-      .set({ defect, defectSource: source, updatedAt: new Date() })
+      .set({
+        defect,
+        defectSource: source,
+        lastCheckedAt: nowIso(),
+        updatedAt: new Date(),
+      })
       .where(sql`${printers.id} in ${ids}`)
       .returning({ id: printers.id })
     return result.length
@@ -220,6 +231,56 @@ export async function reapplyAutoDefects(): Promise<number> {
       }
     }
     return updated
+  })
+}
+
+/** Momento (ISO) usado como "última verificação" das alterações manuais. */
+function nowIso(): string {
+  return new Date().toISOString().replace(/\.\d{3}Z$/, "Z")
+}
+
+/**
+ * Altera o status de monitoramento de uma impressora. "Fora de Monitoramento"
+ * mantém o equipamento fora, mesmo que ainda reporte leitura; "Monitorada"
+ * volta a participar do monitoramento.
+ */
+export async function updatePrinterStatus(
+  id: number,
+  status: "Monitorada" | "Fora de Monitoramento",
+): Promise<FleetPrinter | null> {
+  return withDatabase(async (db) => {
+    const [current] = await db.select().from(printers).where(eq(printers.id, id))
+    if (!current) return null
+
+    const monitoring =
+      status === "Fora de Monitoramento" ? "Fora de Monitoramento" : "Monitorada"
+    const today = new Date().toISOString().slice(0, 10)
+
+    const keepsManual = current.defectSource === "manual" && current.defect.trim() !== ""
+    const defect = keepsManual
+      ? current.defect
+      : autoDefect({
+          monitoring,
+          toner: current.tonerPercent,
+          drums: current.drumPercent,
+          ip: current.ip ?? "",
+          lastCheck: today,
+        })
+
+    const [updated] = await db
+      .update(printers)
+      .set({
+        monitoring,
+        defect,
+        defectSource: keepsManual ? "manual" : "auto",
+        lastCheck: current.lastCheck || today,
+        lastCheckedAt: nowIso(),
+        updatedAt: new Date(),
+      })
+      .where(eq(printers.id, id))
+      .returning()
+
+    return updated ? toFleetPrinter(updated) : null
   })
 }
 
@@ -345,6 +406,7 @@ export async function applyReadings(
           defect,
           defectSource: keepsManual ? "manual" : "auto",
           lastCheck: today,
+          lastCheckedAt: nowIso(),
           updatedAt: new Date(),
         })
         .where(eq(printers.id, row.id))

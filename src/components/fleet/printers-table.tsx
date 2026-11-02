@@ -11,7 +11,11 @@ import {
 
 import { Button } from "#/components/ui/button"
 import { Input } from "#/components/ui/input"
-import { type FleetPrinter, formatDateBr } from "#/lib/fleet"
+import {
+  type FleetPrinter,
+  formatDateBr,
+  formatDateTimeBr,
+} from "#/lib/fleet"
 import { DEFECT_OPTIONS } from "#/lib/fleet-seed"
 import { cn } from "#/lib/utils"
 import { Card, CardHeader, EmptyState, StatusChip, TonerCell, rowTone } from "./ui"
@@ -41,6 +45,16 @@ const SORT_OPTIONS: { value: SortMode; label: string }[] = [
   { value: "serie", label: "Número de série (A–Z)" },
   { value: "local", label: "Localização (A–Z)" },
 ]
+
+/** Status escolhido manualmente na tabela. */
+export type PrinterStatusChoice = "Monitorada" | "Fora de Monitoramento"
+
+/** Status atual convertido para a opção editável correspondente. */
+export function statusChoiceOf(printer: FleetPrinter): PrinterStatusChoice {
+  return printer.status === "Fora de Monitoramento"
+    ? "Fora de Monitoramento"
+    : "Monitorada"
+}
 
 const STATUS_OPTIONS = [
   "todos",
@@ -128,6 +142,7 @@ export function PrintersTable({
   onDefectChange,
   onBulkDefect,
   onAutoDefects,
+  onStatusChange,
   embedded = false,
 }: {
   printers: FleetPrinter[]
@@ -140,6 +155,7 @@ export function PrintersTable({
   onDefectChange: (id: number, defect: string, source: "manual") => void
   onBulkDefect: (ids: number[], defect: string) => void
   onAutoDefects: (ids: number[]) => void
+  onStatusChange: (id: number, status: PrinterStatusChoice) => void
   /** Quando true, a tabela é exibida dentro de um cartão já existente. */
   embedded?: boolean
 }) {
@@ -373,13 +389,31 @@ export function PrintersTable({
                       {printer.location || "—"}
                     </td>
                     <td className="px-3 py-2">
-                      <StatusChip status={printer.status} />
+                      <div className="flex items-center gap-1.5">
+                        <StatusChip status={printer.status} />
+                        <select
+                          value={statusChoiceOf(printer)}
+                          aria-label={`Status de ${printer.serial}`}
+                          onChange={(event) =>
+                            onStatusChange(
+                              printer.id,
+                              event.target.value as PrinterStatusChoice,
+                            )
+                          }
+                          className="h-7 rounded-md border border-input bg-background px-1.5 text-[11px] font-medium outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                        >
+                          <option value="Monitorada">Monitorada</option>
+                          <option value="Fora de Monitoramento">Fora</option>
+                        </select>
+                      </div>
                     </td>
                     <td className="px-3 py-2">
                       <TonerCell printer={printer} />
                     </td>
-                    <td className="px-3 py-2.5 text-xs whitespace-nowrap text-muted-foreground">
-                      {formatDateBr(printer.lastCheck)}
+                    <td className="px-3 py-2 text-xs whitespace-nowrap text-muted-foreground">
+                      {printer.lastCheckedAt
+                        ? formatDateTimeBr(printer.lastCheckedAt)
+                        : formatDateBr(printer.lastCheck)}
                     </td>
                     <td className="px-3 py-2">
                       <div className="flex items-center gap-1.5">

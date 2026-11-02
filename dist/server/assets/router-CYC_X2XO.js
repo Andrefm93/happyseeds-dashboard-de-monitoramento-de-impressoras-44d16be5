@@ -1,5 +1,5 @@
-import { A as getUrlScheme, B as rootRouteId, E as deepEqual, N as isDangerousProtocol, O as escapeHtml, P as isModuleNotFoundError, U as __exportAll, V as require_react, W as __toESM, _ as removeTrailingSlash, a as matchContext, b as trimPathLeft, d as reactUse, i as dummyMatchContext, k as functionalUpdate$1, l as useHydrated, m as cleanPath, o as useRouter, p as invariant, t as getServerFnById, u as require_jsx_runtime, x as trimPathRight } from "./__23tanstack-start-server-fn-resolver-B1x-S3wN.js";
-import { _ as createNonReactiveMutableStore, f as _getAssetMatches, m as RouterCore, n as ErrorComponent, o as getAssetCrossOrigin, r as appendUniqueUserTags, s as getScriptPreloadAttrs, u as resolveManifestCssLink, v as createNonReactiveReadonlyStore } from "./CatchBoundary-BJ8mBvQs.js";
+import { A as getUrlScheme, B as rootRouteId, E as deepEqual, N as isDangerousProtocol, O as escapeHtml, P as isModuleNotFoundError, U as __exportAll, V as require_react, W as __toESM, _ as removeTrailingSlash, a as matchContext, b as trimPathLeft, d as reactUse, i as dummyMatchContext, k as functionalUpdate$1, l as useHydrated, m as cleanPath, o as useRouter, p as invariant, t as getServerFnById, u as require_jsx_runtime, x as trimPathRight } from "./__23tanstack-start-server-fn-resolver-fGYeUwyj.js";
+import { _ as createNonReactiveMutableStore, f as _getAssetMatches, m as RouterCore, n as ErrorComponent, o as getAssetCrossOrigin, r as appendUniqueUserTags, s as getScriptPreloadAttrs, u as resolveManifestCssLink, v as createNonReactiveReadonlyStore } from "./CatchBoundary-DAwlkC45.js";
 import { _ as redirect, f as TSS_SERVER_FUNCTION, t as createServerFn } from "./createServerFn-BVCUSTuW.js";
 import { a as string, i as object, n as array, r as number, t as _enum } from "./schemas-BLwGkJWI.js";
 //#endregion
@@ -4431,6 +4431,11 @@ var setPrinterDefect = createServerFn({ method: "POST" }).validator(object({
 	defect: string(),
 	source: _enum(["auto", "manual"])
 })).handler(createSsrRpc("1166d4612b95decf3dad539e34e4264d2540b80d4de43a9e842b7e565559a689"));
+/** Altera o status entre Monitorada e Fora de Monitoramento. */
+var setPrinterStatus = createServerFn({ method: "POST" }).validator(object({
+	id: number().int(),
+	status: _enum(["Monitorada", "Fora de Monitoramento"])
+})).handler(createSsrRpc("836a72525ff901b345c0ca6754d76dc63fff65ead616ad826595209866b2547e"));
 var setDefectsInBulk = createServerFn({ method: "POST" }).validator(object({
 	ids: array(number().int()).max(5e3),
 	defect: string(),
@@ -4446,7 +4451,7 @@ var readingSchema = object({
 var updateTonerReadings = createServerFn({ method: "POST" }).validator(object({ entries: array(readingSchema).max(1e4) })).handler(createSsrRpc("6b2fdd34560bee0111c535bab1ae91a50cfc275f950675bdec755a39af021309"));
 //#endregion
 //#region src/routes/index.tsx
-var $$splitComponentImporter = () => import("./routes-C4ZzHGPv.js");
+var $$splitComponentImporter = () => import("./routes-Dod9oMnI.js");
 var Route$1 = createFileRoute("/")({
 	loader: () => fetchPrinters(),
 	component: lazyRouteComponent($$splitComponentImporter, "component")
@@ -4489,4 +4494,4 @@ function getRouter() {
 	return router;
 }
 //#endregion
-export { restoreDemoFleet as a, updateTonerReadings as c, getRouter, refreshPrinterMonitoring as i, Route$1 as n, setDefectsInBulk as o, importPrinterRows as r, setPrinterDefect as s, router_exports as t };
+export { restoreDemoFleet as a, setPrinterStatus as c, getRouter, refreshPrinterMonitoring as i, updateTonerReadings as l, Route$1 as n, setDefectsInBulk as o, importPrinterRows as r, setPrinterDefect as s, router_exports as t };

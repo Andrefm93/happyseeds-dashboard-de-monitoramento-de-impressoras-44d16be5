@@ -1,7 +1,7 @@
-import { H as __commonJSMin, U as __exportAll, V as require_react, W as __toESM, o as useRouter, r as require_with_selector$1, u as require_jsx_runtime } from "./__23tanstack-start-server-fn-resolver-B1x-S3wN.js";
-import { t as require_react_dom } from "./react-dom-CzANz2mh.js";
-import { c as parsePercent, i as averageToner, l as tonerBand, n as TONER_BAND_ORDER, o as formatDateBr, r as autoDefect, s as formatDateTimeBr, t as TONER_BAND_LABEL, u as DEFECT_OPTIONS } from "./fleet-CLVmqmue.js";
-import { a as restoreDemoFleet, c as updateTonerReadings, i as refreshPrinterMonitoring, n as Route, o as setDefectsInBulk, r as importPrinterRows, s as setPrinterDefect } from "./router-KaHPWt1Y.js";
+import { H as __commonJSMin, U as __exportAll, V as require_react, W as __toESM, o as useRouter, r as require_with_selector$1, u as require_jsx_runtime } from "./__23tanstack-start-server-fn-resolver-fGYeUwyj.js";
+import { t as require_react_dom } from "./react-dom-Di169I_q.js";
+import { c as parsePercent, i as averageToner, l as tonerBand, n as TONER_BAND_ORDER, o as formatDateBr, r as autoDefect, s as formatDateTimeBr, t as TONER_BAND_LABEL, u as DEFECT_OPTIONS } from "./fleet-Bg0wYNXV.js";
+import { a as restoreDemoFleet, c as setPrinterStatus, i as refreshPrinterMonitoring, l as updateTonerReadings, n as Route, o as setDefectsInBulk, r as importPrinterRows, s as setPrinterDefect } from "./router-CYC_X2XO.js";
 //#region node_modules/.pnpm/sonner@2.0.8_@types+react@19.3.0_react-dom@19.3.0_react@19.3.0__react@19.3.0/node_modules/sonner/dist/index.mjs
 var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
 var import_react_dom = /* @__PURE__ */ __toESM(require_react_dom(), 1);
@@ -29170,6 +29170,10 @@ var SORT_OPTIONS = [
 		label: "Localização (A–Z)"
 	}
 ];
+/** Status atual convertido para a opção editável correspondente. */
+function statusChoiceOf(printer) {
+	return printer.status === "Fora de Monitoramento" ? "Fora de Monitoramento" : "Monitorada";
+}
 var STATUS_OPTIONS = [
 	"todos",
 	"Monitorada",
@@ -29210,7 +29214,7 @@ function matchesFilters(printer, filters, query) {
 	}
 	return true;
 }
-function PrintersTable({ printers, filters, onFiltersChange, query, onQueryChange, sort, onSortChange, onDefectChange, onBulkDefect, onAutoDefects, embedded = false }) {
+function PrintersTable({ printers, filters, onFiltersChange, query, onQueryChange, sort, onSortChange, onDefectChange, onBulkDefect, onAutoDefects, onStatusChange, embedded = false }) {
 	const [showFilters, setShowFilters] = (0, import_react.useState)(false);
 	const [bulkDefect, setBulkDefect] = (0, import_react.useState)("Operando Normalmente");
 	const sorted = (0, import_react.useMemo)(() => sortPrinters(printers, sort), [printers, sort]);
@@ -29438,15 +29442,30 @@ function PrintersTable({ printers, filters, onFiltersChange, query, onQueryChang
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
 								className: "px-3 py-2",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(StatusChip, { status: printer.status })
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "flex items-center gap-1.5",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(StatusChip, { status: printer.status }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
+										value: statusChoiceOf(printer),
+										"aria-label": `Status de ${printer.serial}`,
+										onChange: (event) => onStatusChange(printer.id, event.target.value),
+										className: "h-7 rounded-md border border-input bg-background px-1.5 text-[11px] font-medium outline-none focus-visible:ring-2 focus-visible:ring-ring",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+											value: "Monitorada",
+											children: "Monitorada"
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+											value: "Fora de Monitoramento",
+											children: "Fora"
+										})]
+									})]
+								})
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
 								className: "px-3 py-2",
 								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TonerCell, { printer })
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
-								className: "px-3 py-2.5 text-xs whitespace-nowrap text-muted-foreground",
-								children: formatDateBr(printer.lastCheck)
+								className: "px-3 py-2 text-xs whitespace-nowrap text-muted-foreground",
+								children: printer.lastCheckedAt ? formatDateTimeBr(printer.lastCheckedAt) : formatDateBr(printer.lastCheck)
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
 								className: "px-3 py-2",
@@ -57581,6 +57600,20 @@ function Dashboard() {
 			setBusy(false);
 		}
 	}
+	/** Troca o status entre Monitorada e Fora de Monitoramento. */
+	async function handleStatusChange(id, status) {
+		try {
+			await setPrinterStatus({ data: {
+				id,
+				status
+			} });
+			setLastCheck((/* @__PURE__ */ new Date()).toISOString());
+			await reload();
+			toast.success(status === "Fora de Monitoramento" ? "Impressora colocada fora de monitoramento." : "Impressora monitorada novamente.");
+		} catch {
+			toast.error("Não foi possível alterar o status.");
+		}
+	}
 	async function handleDefectChange(id, defect, source) {
 		try {
 			await setPrinterDefect({ data: {
@@ -57771,6 +57804,7 @@ function Dashboard() {
 								onDefectChange: handleDefectChange,
 								onBulkDefect: handleBulkDefect,
 								onAutoDefects: handleAutoDefects,
+								onStatusChange: handleStatusChange,
 								embedded: true
 							})
 						] }),
@@ -57922,7 +57956,8 @@ function Dashboard() {
 					onSortChange: setSort,
 					onDefectChange: handleDefectChange,
 					onBulkDefect: handleBulkDefect,
-					onAutoDefects: handleAutoDefects
+					onAutoDefects: handleAutoDefects,
+					onStatusChange: handleStatusChange
 				})]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(InfoModal, {

@@ -1,0 +1,1 @@
+ALTER TABLE "printers" ADD COLUMN "last_checked_at" text DEFAULT '' NOT NULL;

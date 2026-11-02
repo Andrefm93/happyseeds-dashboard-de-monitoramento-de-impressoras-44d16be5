@@ -11,6 +11,7 @@ import {
   refreshMonitoring,
   updateDefectsInBulk,
   updatePrinterDefect,
+  updatePrinterStatus,
   type ReadingUpdateResult,
 } from "./printers.server"
 
@@ -61,6 +62,16 @@ export const setPrinterDefect = createServerFn({ method: "POST" })
   .handler(({ data }) =>
     updatePrinterDefect(data.id, data.defect, data.source),
   )
+
+/** Altera o status entre Monitorada e Fora de Monitoramento. */
+export const setPrinterStatus = createServerFn({ method: "POST" })
+  .validator(
+    z.object({
+      id: z.number().int(),
+      status: z.enum(["Monitorada", "Fora de Monitoramento"]),
+    }),
+  )
+  .handler(({ data }) => updatePrinterStatus(data.id, data.status))
 
 export const setDefectsInBulk = createServerFn({ method: "POST" })
   .validator(
